@@ -1,5 +1,6 @@
 /**
  * Aplicación Principal EsquelasCreator - Funerarias Perpetuo Socorro
+ * Sistema Moderno de Diseño con Soporte Dúplex & Modo Claro/Oscuro
  */
 const app = {
   currentTab: 'editor',
@@ -47,23 +48,30 @@ const app = {
     } else {
       document.documentElement.classList.add('dark');
     }
-    this.updateThemeIcon();
+    this.updateThemeVisuals();
   },
 
   toggleTheme() {
     const isDark = document.documentElement.classList.toggle('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    this.updateThemeIcon();
-    this.showToast(`Modo ${isDark ? 'Nocturno' : 'Claro'} activado`);
+    this.updateThemeVisuals();
+    this.showToast(`Modo ${isDark ? 'Oscuro Solemne' : 'Claro Serenidad'} activado`);
   },
 
-  updateThemeIcon() {
+  updateThemeVisuals() {
     const isDark = document.documentElement.classList.contains('dark');
-    const iconContainer = document.getElementById('theme-icon');
-    if (iconContainer) {
-      iconContainer.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
-      if (window.lucide) lucide.createIcons();
+    const optDark = document.getElementById('theme-opt-dark');
+    const optLight = document.getElementById('theme-opt-light');
+    if (optDark && optLight) {
+      if (isDark) {
+        optDark.className = 'theme-switch-option theme-switch-dark-active';
+        optLight.className = 'theme-switch-option theme-switch-light-inactive';
+      } else {
+        optDark.className = 'theme-switch-option theme-switch-dark-inactive';
+        optLight.className = 'theme-switch-option theme-switch-light-active';
+      }
     }
+    if (window.lucide) lucide.createIcons();
   },
 
   initDefaultValues() {
@@ -110,7 +118,7 @@ const app = {
     this.currentTab = tabName;
 
     const activeClasses = 'flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-gradient-to-r from-bgreen-800 to-bpurple-800 text-white shadow-md shadow-bpurple-950/30 border border-bpurple-500/40';
-    const inactiveClasses = 'flex items-center gap-2 px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-white hover:bg-bpurple-900/40 transition-all';
+    const inactiveClasses = 'flex items-center gap-2 px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-bpurple-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-bpurple-900/40 transition-all';
 
     const bEditor = document.getElementById('nav-editor');
     const bHist = document.getElementById('nav-history');
@@ -137,19 +145,26 @@ const app = {
   goToStep(stepNumber) {
     this.currentStep = stepNumber;
 
+    // Actualizar barras de progreso entre pasos
+    const fill1 = document.getElementById('progress-bar-fill-1');
+    const fill2 = document.getElementById('progress-bar-fill-2');
+    if (fill1) fill1.style.width = stepNumber >= 2 ? '100%' : '0%';
+    if (fill2) fill2.style.width = stepNumber >= 3 ? '100%' : '0%';
+
     [1, 2, 3].forEach(n => {
       const ind = document.getElementById(`step-ind-${n}`);
       const content = document.getElementById(`step-${n}-content`);
       if (ind) {
+        const badge = ind.querySelector('span:first-child');
         if (n === stepNumber) {
-          ind.className = 'flex items-center gap-2.5 text-gold-500 font-bold cursor-pointer';
-          ind.querySelector('span:first-child').className = 'w-8 h-8 rounded-xl bg-gradient-to-tr from-bgreen-800 to-gold-500 text-slate-950 flex items-center justify-center font-black text-xs shadow-md shadow-gold-500/20';
+          ind.className = 'flex items-center gap-2.5 text-gold-500 dark:text-gold-400 font-bold cursor-pointer transition-all scale-105';
+          if (badge) badge.className = 'w-8 h-8 rounded-xl bg-gradient-to-tr from-bgreen-800 to-gold-500 text-slate-950 flex items-center justify-center font-black text-xs shadow-md shadow-gold-500/20 ring-2 ring-gold-400/40';
         } else if (n < stepNumber) {
-          ind.className = 'flex items-center gap-2.5 text-emerald-500 dark:text-emerald-400 font-medium cursor-pointer';
-          ind.querySelector('span:first-child').className = 'w-8 h-8 rounded-xl bg-emerald-500 text-slate-950 flex items-center justify-center font-bold text-xs';
+          ind.className = 'flex items-center gap-2.5 text-emerald-600 dark:text-emerald-400 font-medium cursor-pointer transition-all';
+          if (badge) badge.className = 'w-8 h-8 rounded-xl bg-emerald-500 text-white flex items-center justify-center font-bold text-xs shadow-sm';
         } else {
-          ind.className = 'flex items-center gap-2.5 text-slate-400 cursor-pointer';
-          ind.querySelector('span:first-child').className = 'w-8 h-8 rounded-xl bg-slate-200 dark:bg-bgreen-900/60 text-slate-500 dark:text-slate-400 flex items-center justify-center font-bold text-xs border border-slate-300 dark:border-bpurple-800/40';
+          ind.className = 'flex items-center gap-2.5 text-slate-400 cursor-pointer transition-all hover:text-slate-600 dark:hover:text-slate-200';
+          if (badge) badge.className = 'w-8 h-8 rounded-xl bg-slate-200 dark:bg-bgreen-900/60 text-slate-500 dark:text-slate-400 flex items-center justify-center font-bold text-xs border border-slate-300 dark:border-bpurple-800/40';
         }
       }
       if (content) {
@@ -176,26 +191,76 @@ const app = {
     const labelFmt = document.getElementById('label-current-format');
     const switcher = document.getElementById('preview-face-switcher');
     const containerInterior = document.getElementById('container-oracion-interior');
+    const btnPrevExt = document.getElementById('btn-preview-exterior');
+    const btnPrevInt = document.getElementById('btn-preview-interior');
+    const btnSheetExt = document.getElementById('btn-sheet-exterior');
+    const btnSheetInt = document.getElementById('btn-sheet-interior');
+
+    const checkLib = document.getElementById('check-icon-librito');
+    const checkSep = document.getElementById('check-icon-separador');
+    const badgeLib = document.getElementById('badge-status-librito');
+    const badgeSep = document.getElementById('badge-status-separador');
+
+    const activeCardClass = 'group relative cursor-pointer rounded-3xl p-8 glass-card border-2 border-gold-400 shadow-2xl ring-4 ring-gold-500/25 flex flex-col items-center text-center transition-all duration-300 scale-[1.02] bg-gradient-to-b from-bgreen-900/20 to-bpurple-900/30';
+    const inactiveCardClass = 'group relative cursor-pointer rounded-3xl p-8 glass-card border border-slate-300 dark:border-slate-800 opacity-65 hover:opacity-100 hover:border-gold-400/60 shadow-xl flex flex-col items-center text-center transition-all duration-300 hover:scale-[1.01]';
+
+    const selectedBadgeHTML = `<i data-lucide="check-circle-2" class="w-4 h-4"></i> SELECCIONADO`;
+    const unselectedBadgeHTML = `<i data-lucide="circle" class="w-4 h-4"></i> Clic para Seleccionar`;
 
     if (cardSep && cardLib) {
       if (format === 'separador') {
-        cardSep.className = 'group relative cursor-pointer rounded-3xl p-7 glass-panel border-2 border-gold-500 shadow-2xl flex flex-col items-center text-center transition-all duration-300';
-        cardLib.className = 'group relative cursor-pointer rounded-3xl p-7 glass-panel border-2 border-slate-300 dark:border-bgreen-900/50 hover:border-gold-400/80 shadow-xl flex flex-col items-center text-center transition-all duration-300';
-        if (switcher) switcher.classList.add('hidden');
+        cardSep.className = activeCardClass;
+        cardLib.className = inactiveCardClass;
+
+        if (checkSep) { checkSep.classList.remove('hidden'); checkSep.classList.add('flex'); }
+        if (checkLib) { checkLib.classList.add('hidden'); checkLib.classList.remove('flex'); }
+
+        if (badgeSep) {
+          badgeSep.className = 'flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gold-500 text-slate-950 font-black shadow-md';
+          badgeSep.innerHTML = selectedBadgeHTML;
+        }
+        if (badgeLib) {
+          badgeLib.className = 'flex items-center gap-1.5 px-3 py-1 text-slate-500 dark:text-slate-400 hover:text-gold-400 font-bold transition-colors';
+          badgeLib.innerHTML = unselectedBadgeHTML;
+        }
+
+        if (switcher) switcher.classList.remove('hidden');
         if (containerInterior) containerInterior.classList.add('hidden');
+        if (btnPrevExt) btnPrevExt.textContent = 'Frente (Difunto & Santo)';
+        if (btnPrevInt) btnPrevInt.textContent = 'Contraportada';
+        if (btnSheetExt) btnSheetExt.textContent = 'Pág 1: Frente (4x en Fila)';
+        if (btnSheetInt) btnSheetInt.textContent = 'Pág 2: Contraportada (4x en Fila)';
       } else {
-        cardLib.className = 'group relative cursor-pointer rounded-3xl p-7 glass-panel border-2 border-gold-500 shadow-2xl flex flex-col items-center text-center transition-all duration-300';
-        cardSep.className = 'group relative cursor-pointer rounded-3xl p-7 glass-panel border-2 border-slate-300 dark:border-bgreen-900/50 hover:border-gold-400/80 shadow-xl flex flex-col items-center text-center transition-all duration-300';
+        cardLib.className = activeCardClass;
+        cardSep.className = inactiveCardClass;
+
+        if (checkLib) { checkLib.classList.remove('hidden'); checkLib.classList.add('flex'); }
+        if (checkSep) { checkSep.classList.add('hidden'); checkSep.classList.remove('flex'); }
+
+        if (badgeLib) {
+          badgeLib.className = 'flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gold-500 text-slate-950 font-black shadow-md';
+          badgeLib.innerHTML = selectedBadgeHTML;
+        }
+        if (badgeSep) {
+          badgeSep.className = 'flex items-center gap-1.5 px-3 py-1 text-slate-500 dark:text-slate-400 hover:text-gold-400 font-bold transition-colors';
+          badgeSep.innerHTML = unselectedBadgeHTML;
+        }
+
         if (switcher) switcher.classList.remove('hidden');
         if (containerInterior) containerInterior.classList.remove('hidden');
+        if (btnPrevExt) btnPrevExt.textContent = 'Cara Exterior';
+        if (btnPrevInt) btnPrevInt.textContent = 'Cara Interior';
+        if (btnSheetExt) btnSheetExt.textContent = 'Pág 1: Exterior (4x)';
+        if (btnSheetInt) btnSheetInt.textContent = 'Pág 2: Interior (4x)';
       }
     }
 
     if (labelFmt) {
-      labelFmt.textContent = `Formato: ${format === 'separador' ? 'Separador de Libro' : 'Librito Díptico (Doble Cara)'}`;
+      labelFmt.textContent = `Formato: ${format === 'separador' ? 'Separadores en Fila (Dúplex 4x)' : 'Librito Díptico (Doble Cara 4x)'}`;
     }
 
     this.updatePreview();
+    if (window.lucide) lucide.createIcons();
   },
 
   setPreviewFace(face) {
@@ -203,12 +268,12 @@ const app = {
     const btnExt = document.getElementById('btn-preview-exterior');
     const btnInt = document.getElementById('btn-preview-interior');
 
-    const activeBtn = 'px-3 py-1 rounded-lg bg-gradient-to-r from-bgreen-800 to-bpurple-800 text-white font-bold transition-all shadow-sm';
-    const inactiveBtn = 'px-3 py-1 rounded-lg text-slate-600 dark:text-slate-400 hover:text-white transition-all font-semibold';
+    const activeBtn = 'px-3.5 py-1 rounded-lg bg-gradient-to-r from-bgreen-800 to-bpurple-800 text-white font-bold transition-all shadow-sm';
+    const inactiveBtn = 'px-3.5 py-1 rounded-lg text-slate-600 dark:text-slate-400 hover:text-bpurple-900 dark:hover:text-white transition-all font-semibold';
 
     if (btnExt && btnInt) {
-      btnExt.className = face === 'exterior' ? activeBtn : inactiveBtn;
-      btnInt.className = face === 'interior' ? activeBtn : inactiveBtn;
+      btnExt.className = (face === 'exterior' || face === 'frente') ? activeBtn : inactiveBtn;
+      btnInt.className = (face === 'interior' || face === 'reverso') ? activeBtn : inactiveBtn;
     }
 
     this.updatePreview();
@@ -219,12 +284,12 @@ const app = {
     const btnExt = document.getElementById('btn-sheet-exterior');
     const btnInt = document.getElementById('btn-sheet-interior');
 
-    const activeBtn = 'px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-bgreen-800 to-bpurple-800 text-white shadow-sm transition-all';
-    const inactiveBtn = 'px-3.5 py-1.5 rounded-xl text-slate-600 dark:text-slate-400 hover:text-white transition-all';
+    const activeBtn = 'px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-bgreen-800 to-bpurple-800 text-white shadow-sm transition-all font-bold';
+    const inactiveBtn = 'px-3.5 py-1.5 rounded-xl text-slate-600 dark:text-slate-400 hover:text-bpurple-900 dark:hover:text-white transition-all';
 
     if (btnExt && btnInt) {
-      btnExt.className = face === 'exterior' ? activeBtn : inactiveBtn;
-      btnInt.className = face === 'interior' ? activeBtn : inactiveBtn;
+      btnExt.className = (face === 'exterior' || face === 'frente') ? activeBtn : inactiveBtn;
+      btnInt.className = (face === 'interior' || face === 'reverso') ? activeBtn : inactiveBtn;
     }
 
     const data = this.getCurrentFormData();
@@ -277,7 +342,7 @@ const app = {
     if (input && counter) {
       const length = input.value.length;
       counter.textContent = `${length} / 200`;
-      counter.className = length >= 200 ? 'text-xs font-mono text-red-500 font-bold' : 'text-xs font-mono text-gold-400 font-semibold';
+      counter.className = length >= 200 ? 'text-xs font-mono text-red-500 font-bold' : 'text-xs font-mono text-gold-500 dark:text-gold-400 font-semibold';
     }
   },
 
@@ -322,16 +387,20 @@ const app = {
     const data = this.getCurrentFormData();
     
     if (data.formato === 'separador') {
-      container.style.width = '240px';
-      container.style.height = '440px';
-      container.innerHTML = pdfGenerator.generateBookmarkHTML(data);
+      container.style.width = '175px';
+      container.style.height = '430px';
+      if (this.previewFace === 'interior' || this.previewFace === 'reverso') {
+        container.innerHTML = pdfGenerator.generateBookmarkBackHTML(data);
+      } else {
+        container.innerHTML = pdfGenerator.generateBookmarkFrontHTML(data);
+      }
     } else {
       container.style.width = '360px';
       container.style.height = '255px';
-      if (this.previewFace === 'exterior') {
-        container.innerHTML = pdfGenerator.generateBookletExteriorHTML(data);
-      } else {
+      if (this.previewFace === 'interior') {
         container.innerHTML = pdfGenerator.generateBookletInteriorHTML(data);
+      } else {
+        container.innerHTML = pdfGenerator.generateBookletExteriorHTML(data);
       }
     }
   },
@@ -481,39 +550,39 @@ const app = {
         <div>
           <div class="flex items-start justify-between gap-3 mb-3">
             <div class="flex items-center gap-3">
-              <div class="w-12 h-14 rounded-2xl overflow-hidden bg-white shadow-sm border border-gold-500/40 flex items-center justify-center p-0.5 flex-shrink-0">
+              <div class="w-12 h-14 rounded-2xl overflow-hidden bg-white shadow-sm border border-gold-500/40 flex items-center justify-center p-1 flex-shrink-0">
                 <img src="${e.foto_finado_url || '/static/img/defaults/paloma_lineart.svg'}" alt="${e.nombre_finado}" class="w-full h-full object-contain">
               </div>
               <div>
                 <h4 class="font-cinzel text-sm font-bold text-slate-900 dark:text-white line-clamp-1">${e.nombre_finado}</h4>
-                ${e.familia ? `<p class="text-[10px] text-gold-500 font-serif font-bold italic">Familia ${e.familia}</p>` : ''}
+                ${e.familia ? `<p class="text-[11px] text-gold-600 dark:text-gold-400 font-serif font-bold italic">Familia ${e.familia}</p>` : ''}
                 <p class="text-[11px] text-slate-500 dark:text-slate-400 font-sans">${this.formatDatesForDisplay(e.fecha_nacimiento, e.fecha_defuncion)}</p>
               </div>
             </div>
-            <span class="px-2.5 py-0.5 rounded-full text-[9px] font-bold bg-bpurple-800/20 text-bpurple-600 dark:text-gold-300 border border-bpurple-600/30 uppercase">
+            <span class="px-2.5 py-0.5 rounded-full text-[9px] font-bold bg-bpurple-800/20 text-bpurple-700 dark:text-gold-300 border border-bpurple-600/30 uppercase">
               ${e.formato === 'separador' ? 'Separador' : 'Librito'}
             </span>
           </div>
 
-          <p class="text-xs italic text-slate-600 dark:text-slate-300 line-clamp-2 mb-4 font-serif bg-white/40 dark:bg-bgreen-950/70 p-3 rounded-2xl border border-slate-200 dark:border-bpurple-900/40">
+          <p class="text-xs italic text-slate-600 dark:text-slate-300 line-clamp-2 mb-4 font-serif bg-slate-100/60 dark:bg-bgreen-950/70 p-3 rounded-2xl border border-slate-200 dark:border-bpurple-900/40">
             "${e.oracion || ''}"
           </p>
         </div>
 
-        <div class="pt-3 border-t border-slate-200 dark:border-bpurple-800/30 flex items-center justify-between gap-2">
-          <button onclick="pdfGenerator.downloadFromHistory('${e.id}')" class="flex-1 py-2 px-3 rounded-xl gradient-gold-btn text-slate-950 font-black text-xs flex items-center justify-center gap-1.5 shadow-md">
-            <i data-lucide="download" class="w-3.5 h-3.5"></i> PDF Dúplex
+        <div class="pt-3 border-t border-slate-200 dark:border-bpurple-800/40 flex items-center justify-between gap-2">
+          <button onclick="pdfGenerator.downloadFromHistory('${e.id}')" class="flex-1 py-2.5 px-3 rounded-xl btn-gold-luxury text-slate-950 font-black text-xs flex items-center justify-center gap-1.5 shadow-lg">
+            <i data-lucide="download" class="w-4 h-4 text-slate-950 stroke-[2.5]"></i> PDF Dúplex
           </button>
           
-          <button onclick="app.editEsquela('${e.id}')" class="p-2 rounded-xl bg-slate-200 dark:bg-bgreen-950 hover:bg-slate-300 dark:hover:bg-bgreen-900 text-slate-700 dark:text-slate-200 text-xs border border-slate-300 dark:border-slate-800" title="Editar">
-            <i data-lucide="edit-2" class="w-4 h-4 text-gold-500"></i>
+          <button onclick="app.editEsquela('${e.id}')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-bgreen-900/80 hover:bg-slate-200 dark:hover:bg-bgreen-800 text-slate-700 dark:text-gold-400 text-xs border border-slate-300 dark:border-gold-500/30 transition-all shadow-sm" title="Editar">
+            <i data-lucide="edit-2" class="w-4 h-4 text-gold-600 dark:text-gold-400"></i>
           </button>
 
-          <button onclick="app.duplicateEsquela('${e.id}')" class="p-2 rounded-xl bg-slate-200 dark:bg-bgreen-950 hover:bg-slate-300 dark:hover:bg-bgreen-900 text-slate-700 dark:text-slate-200 text-xs border border-slate-300 dark:border-slate-800" title="Duplicar">
-            <i data-lucide="copy" class="w-4 h-4 text-bpurple-400"></i>
+          <button onclick="app.duplicateEsquela('${e.id}')" class="p-2.5 rounded-xl bg-slate-100 dark:bg-bpurple-900/80 hover:bg-slate-200 dark:hover:bg-bpurple-800 text-slate-700 dark:text-purple-300 text-xs border border-slate-300 dark:border-purple-500/30 transition-all shadow-sm" title="Duplicar">
+            <i data-lucide="copy" class="w-4 h-4 text-bpurple-600 dark:text-purple-300"></i>
           </button>
 
-          <button onclick="app.deleteEsquela('${e.id}')" class="p-2 rounded-xl bg-red-500/10 hover:bg-red-500 text-red-500 hover:text-white text-xs border border-red-500/20 transition-all" title="Eliminar">
+          <button onclick="app.deleteEsquela('${e.id}')" class="p-2.5 rounded-xl bg-red-500/10 hover:bg-red-600 text-red-500 hover:text-white text-xs border border-red-500/30 transition-all shadow-sm" title="Eliminar">
             <i data-lucide="trash-2" class="w-4 h-4"></i>
           </button>
         </div>
@@ -599,7 +668,7 @@ const app = {
 
       this.switchTab('editor');
       this.goToStep(2);
-      this.showToast('Esquela duplicada en el editor.');
+      this.showToast('Esquela duplicada en el editor');
     } catch (error) {
       console.error('Error al duplicar:', error);
     }

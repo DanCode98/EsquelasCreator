@@ -14,50 +14,53 @@
       theme: {
         extend: {
           fontFamily: {
-            serif: ['Cinzel', 'Playfair Display', 'Georgia', 'serif'],
-            cinzel: ['Cinzel', 'serif'],
-            playfair: ['Playfair Display', 'serif'],
-            script: ['Great Vibes', 'cursive'],
-            body: ['Inter', 'sans-serif'],
+            playfair: ['Playfair Display', 'Georgia', 'serif'],
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            display: ['Playfair Display', 'serif'],
+            cinzel: ['Playfair Display', 'serif'],
+            outfit: ['Outfit', 'sans-serif'],
+            sans: ['Open Sans', 'Plus Jakarta Sans', 'sans-serif'],
+            jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+            script: ['Pinyon Script', 'cursive'],
           },
           colors: {
             bgreen: {
               50: '#f0f6f6',
               100: '#dce8e9',
-              200: '#bad3d5',
+              200: '#b8d3d5',
               300: '#8eb6b9',
               400: '#5f9498',
               500: '#43787d',
               600: '#346064',
               700: '#2b4d51',
-              800: '#1b2d2f', // VERDE PRINCIPAL DE MARCA
+              800: '#1b2d2f', // VERDE PRINCIPAL
               900: '#122022',
               950: '#070d0e',
             },
             bpurple: {
-              50: '#f4f3fb',
-              100: '#ece9f7',
-              200: '#dbd5f0',
-              300: '#c2b8e6',
-              400: '#a393d8',
-              500: '#8670c7',
-              600: '#6f56b6',
-              700: '#5a429f',
-              800: '#392f6e', // MORADO PRINCIPAL DE MARCA
-              900: '#2a2254',
-              950: '#151030',
+              50: '#f8f7fc',
+              100: '#f0edfa',
+              200: '#e1dbf4',
+              300: '#cbbfe9',
+              400: '#a18bbf', // LAVANDA EDITORIAL NICEPAGE
+              500: '#8168a6',
+              600: '#684e8f',
+              700: '#523c75',
+              800: '#392f6e', // MORADO CORPORATIVO
+              900: '#261f4c',
+              950: '#120f26',
             },
             gold: {
-              50: '#fffdf5',
-              100: '#fef9e7',
-              200: '#fcf0c3',
-              300: '#f8e294',
-              400: '#f2cd5c',
-              500: '#dfb12e',
-              600: '#c29221',
-              700: '#9b6e1b',
-              800: '#7e561c',
-              900: '#6a471c',
+              50: '#fffef0',
+              100: '#fef9c3',
+              200: '#fef08a',
+              300: '#fde047',
+              400: '#facc15', // ORO GALERÍA
+              500: '#eab308',
+              600: '#ca8a04',
+              700: '#a16207',
+              800: '#854d0e',
+              900: '#713f12',
             }
           }
         }
@@ -72,56 +75,73 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="/static/css/styles.css">
+  <!-- Custom Styles con Cache Busting -->
+  <link rel="stylesheet" href="/static/css/styles.css?v={{ v|default('2026') }}">
 </head>
-<body class="min-h-full flex flex-col transition-colors duration-300 font-inter">
+<body class="min-h-full flex flex-col font-sans transition-colors duration-300 antialiased selection:bg-gold-500/30 selection:text-gold-300">
 
-  <!-- ================= NAVBAR ================= -->
-  <header class="no-print sticky top-0 z-40 glass-panel border-b border-bpurple-800/30 shadow-xl transition-all">
+  <!-- ================= TOP AMBIENT GLOW ================= -->
+  <div class="fixed inset-x-0 top-0 h-80 pointer-events-none z-0 overflow-hidden opacity-40 dark:opacity-70">
+    <div class="absolute -top-40 left-1/4 w-[500px] h-[500px] bg-bgreen-700/30 rounded-full blur-[100px]"></div>
+    <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-bpurple-700/35 rounded-full blur-[100px]"></div>
+  </div>
+
+  <!-- ================= NAVBAR ULTRA MODERNA ================= -->
+  <header class="no-print sticky top-0 z-40 glass-card border-b border-slate-200/80 dark:border-bpurple-800/40 shadow-2xl transition-all">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
+      <div class="flex items-center justify-between h-20 gap-4">
         
         <!-- Logo & Titulo Corporativo -->
         <div class="flex items-center gap-3.5 cursor-pointer group" onclick="app.switchTab('editor')">
-          <div class="relative w-13 h-13 rounded-2xl overflow-hidden p-1 bg-white/95 dark:bg-white shadow-lg border border-gold-500/40 group-hover:scale-105 transition-transform flex items-center justify-center">
-            <img src="/static/img/defaults/logo_perpetuo_socorro.jpg" alt="PS Funerarias" class="w-12 h-12 object-contain">
+          <div class="relative w-13 h-13 rounded-2xl overflow-hidden p-1.5 bg-white shadow-lg border border-gold-500/50 group-hover:scale-105 group-hover:shadow-gold-500/30 transition-all duration-300 flex items-center justify-center">
+            <img src="/static/img/defaults/logo_perpetuo_socorro.jpg" alt="PS Funerarias" class="w-11 h-11 object-contain">
           </div>
           <div>
             <div class="flex items-center gap-2">
-              <h1 class="font-cinzel text-base sm:text-lg font-bold tracking-wider gold-gradient-text">PERPETUO SOCORRO</h1>
-              <span class="hidden md:inline-block px-2 py-0.5 text-[10px] font-bold rounded-full bg-bpurple-800/40 text-bpurple-300 border border-bpurple-600/40 uppercase tracking-widest">
+              <h1 class="font-cinzel text-base sm:text-xl font-black tracking-wider gold-text-gradient drop-shadow-sm">PERPETUO SOCORRO</h1>
+              <span class="hidden lg:inline-flex items-center gap-1.5 px-2.5 py-0.5 text-[10px] font-bold rounded-full bg-bpurple-800/30 text-bpurple-800 dark:text-bpurple-300 border border-bpurple-500/40 uppercase tracking-widest">
+                <span class="w-2 h-2 rounded-full bg-gold-400 animate-ping"></span>
                 ¡Protegemos Familias!
               </span>
             </div>
-            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Sistema de Creación de Esquelas & Recuerdos de Novenario</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Estudio Profesional de Esquelas & Recuerdos de Novenario</p>
           </div>
         </div>
 
-        <!-- Navigation Tabs & Theme Toggle -->
-        <div class="flex items-center gap-2 sm:gap-3">
-          <nav class="flex items-center gap-1.5 p-1 rounded-2xl bg-bgreen-950/40 dark:bg-bgreen-950/70 border border-bpurple-700/30">
-            <button id="nav-editor" onclick="app.switchTab('editor')" class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-gradient-to-r from-bgreen-800 to-bpurple-800 text-white shadow-md shadow-bpurple-950/30 border border-bpurple-500/40">
+        <!-- Navigation Tabs & Prominent Theme Toggle -->
+        <div class="flex items-center gap-3">
+          
+          <!-- Pestañas Principales -->
+          <nav class="flex items-center gap-1.5 p-1 rounded-2xl bg-slate-200/80 dark:bg-bgreen-950/80 border border-slate-300 dark:border-bpurple-700/40 shadow-inner">
+            <button id="nav-editor" onclick="app.switchTab('editor')" class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-gradient-to-r from-bgreen-800 to-bpurple-800 text-white shadow-md shadow-bpurple-950/30 border border-bpurple-500/40">
               <i data-lucide="plus-circle" class="w-4 h-4 text-gold-400"></i>
               <span class="hidden sm:inline">Nueva Esquela</span>
             </button>
             
-            <button id="nav-history" onclick="app.switchTab('history')" class="flex items-center gap-2 px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-white hover:bg-bpurple-900/40 transition-all">
-              <i data-lucide="folder-clock" class="w-4 h-4 text-bpurple-400"></i>
+            <button id="nav-history" onclick="app.switchTab('history')" class="flex items-center gap-2 px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-bpurple-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-bpurple-900/40 transition-all">
+              <i data-lucide="folder-clock" class="w-4 h-4 text-bpurple-600 dark:text-bpurple-400"></i>
               <span class="hidden sm:inline">Guardadas</span>
-              <span id="badge-count-esquelas" class="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-bgreen-800 text-gold-300 border border-gold-500/30">0</span>
+              <span id="badge-count-esquelas" class="px-2 py-0.2 rounded-full text-[10px] font-black bg-bgreen-800 text-gold-300 border border-gold-500/40">0</span>
             </button>
             
-            <button id="nav-saints" onclick="app.switchTab('saints')" class="flex items-center gap-2 px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-white hover:bg-bpurple-900/40 transition-all">
-              <i data-lucide="sparkles" class="w-4 h-4 text-gold-400"></i>
+            <button id="nav-saints" onclick="app.switchTab('saints')" class="flex items-center gap-2 px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-bpurple-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-bpurple-900/40 transition-all">
+              <i data-lucide="sparkles" class="w-4 h-4 text-gold-500 dark:text-gold-400"></i>
               <span class="hidden sm:inline">Santos</span>
             </button>
           </nav>
 
-          <!-- Toggle Dark/Light Mode -->
-          <button id="theme-toggle" onclick="app.toggleTheme()" class="p-2.5 rounded-2xl glass-panel text-slate-600 dark:text-gold-400 hover:scale-110 transition-all border border-bpurple-600/30 shadow-md" title="Cambiar Modo Claro / Nocturno">
-            <i id="theme-icon" data-lucide="sun" class="w-4 h-4"></i>
-          </button>
+          <!-- PROMINENT THEME TOGGLE SWITCH -->
+          <div id="theme-switch-control" onclick="app.toggleTheme()" class="theme-switch-pill" title="Haz clic para cambiar entre Modo Oscuro y Modo Claro">
+            <span id="theme-opt-dark" class="theme-switch-option theme-switch-dark-active">
+              <i data-lucide="moon" class="w-3.5 h-3.5"></i>
+              <span class="hidden md:inline">Oscuro</span>
+            </span>
+            <span id="theme-opt-light" class="theme-switch-option theme-switch-light-inactive">
+              <i data-lucide="sun" class="w-3.5 h-3.5"></i>
+              <span class="hidden md:inline">Claro</span>
+            </span>
+          </div>
+
         </div>
 
       </div>
@@ -129,7 +149,7 @@
   </header>
 
   <!-- ================= MAIN CONTAINER ================= -->
-  <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+  <main class="relative z-10 flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
 
     <!-- ============================================================== -->
     <!-- PESTAÑA 1: CREADOR / EDITOR DE ESQUELAS (WIZARD 3 PASOS)       -->
@@ -137,84 +157,121 @@
     <div id="tab-editor" class="space-y-6">
 
       <!-- Wizard Step Header con Barra de Progreso Elegante -->
-      <div class="no-print glass-panel p-4 sm:p-5 rounded-3xl flex items-center justify-between shadow-2xl">
-        <div class="flex items-center gap-2 sm:gap-6 text-sm">
+      <div class="no-print glass-card p-4 sm:p-5 rounded-3xl flex items-center justify-between shadow-2xl border border-slate-200 dark:border-bpurple-800/40">
+        <div class="flex items-center gap-2 sm:gap-6 text-sm flex-1">
+          
           <!-- Step 1 Indicator -->
-          <div id="step-ind-1" class="flex items-center gap-2.5 text-gold-400 font-bold cursor-pointer" onclick="app.goToStep(1)">
-            <span class="w-8 h-8 rounded-xl bg-gradient-to-tr from-bgreen-800 to-gold-500 text-slate-950 flex items-center justify-center font-black text-xs shadow-md shadow-gold-500/20">1</span>
-            <span class="hidden md:inline">Formato</span>
+          <div id="step-ind-1" class="flex items-center gap-3 text-gold-500 font-bold cursor-pointer transition-all" onclick="app.goToStep(1)">
+            <span class="w-9 h-9 rounded-2xl bg-gradient-to-tr from-bgreen-800 via-bpurple-800 to-gold-500 text-slate-950 flex items-center justify-center font-black text-xs shadow-md shadow-gold-500/25 ring-2 ring-gold-400">1</span>
+            <div class="hidden sm:block">
+              <div class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Paso 1</div>
+              <div class="font-cinzel text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Formato</div>
+            </div>
           </div>
-          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 dark:text-slate-600"></i>
+          
+          <div class="hidden sm:block h-1 flex-1 bg-slate-200 dark:bg-bpurple-950 rounded-full overflow-hidden">
+            <div id="progress-bar-fill-1" class="h-full bg-gradient-to-r from-gold-500 to-bpurple-600 transition-all duration-500 w-full"></div>
+          </div>
+          <i data-lucide="chevron-right" class="sm:hidden w-4 h-4 text-slate-400"></i>
 
           <!-- Step 2 Indicator -->
-          <div id="step-ind-2" class="flex items-center gap-2.5 text-slate-400 cursor-pointer" onclick="app.goToStep(2)">
-            <span class="w-8 h-8 rounded-xl bg-slate-200 dark:bg-bgreen-900/60 text-slate-500 dark:text-slate-400 flex items-center justify-center font-bold text-xs border border-slate-300 dark:border-bpurple-800/40">2</span>
-            <span class="hidden md:inline">Datos y Diseño</span>
+          <div id="step-ind-2" class="flex items-center gap-3 text-slate-400 cursor-pointer transition-all" onclick="app.goToStep(2)">
+            <span class="w-9 h-9 rounded-2xl bg-slate-200 dark:bg-bgreen-900/60 text-slate-500 dark:text-slate-400 flex items-center justify-center font-bold text-xs border border-slate-300 dark:border-bpurple-800/40">2</span>
+            <div class="hidden sm:block">
+              <div class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Paso 2</div>
+              <div class="font-cinzel text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300">Datos & Diseño</div>
+            </div>
           </div>
-          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 dark:text-slate-600"></i>
+          
+          <div class="hidden sm:block h-1 flex-1 bg-slate-200 dark:bg-bpurple-950 rounded-full overflow-hidden">
+            <div id="progress-bar-fill-2" class="h-full bg-gradient-to-r from-bpurple-600 to-gold-500 transition-all duration-500 w-0"></div>
+          </div>
+          <i data-lucide="chevron-right" class="sm:hidden w-4 h-4 text-slate-400"></i>
 
           <!-- Step 3 Indicator -->
-          <div id="step-ind-3" class="flex items-center gap-2.5 text-slate-400 cursor-pointer" onclick="app.goToStep(3)">
-            <span class="w-8 h-8 rounded-xl bg-slate-200 dark:bg-bgreen-900/60 text-slate-500 dark:text-slate-400 flex items-center justify-center font-bold text-xs border border-slate-300 dark:border-bpurple-800/40">3</span>
-            <span class="hidden md:inline">Impresión Dúplex (4x) & PDF</span>
+          <div id="step-ind-3" class="flex items-center gap-3 text-slate-400 cursor-pointer transition-all" onclick="app.goToStep(3)">
+            <span class="w-9 h-9 rounded-2xl bg-slate-200 dark:bg-bgreen-900/60 text-slate-500 dark:text-slate-400 flex items-center justify-center font-bold text-xs border border-slate-300 dark:border-bpurple-800/40">3</span>
+            <div class="hidden sm:block">
+              <div class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Paso 3</div>
+              <div class="font-cinzel text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300">Pliego 4x & PDF Dúplex</div>
+            </div>
           </div>
         </div>
 
-        <div id="editing-badge-container" class="hidden">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-gold-500/20 text-gold-300 border border-gold-500/40">
+        <div id="editing-badge-container" class="hidden pl-4">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-gold-500/20 text-gold-600 dark:text-gold-400 border border-gold-500/40 animate-pulse">
             <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
             Modo Edición
           </span>
-          <button onclick="app.resetForm()" class="text-xs text-slate-400 hover:text-red-400 ml-2 underline">Cancelar</button>
+          <button onclick="app.resetForm()" class="text-xs text-slate-400 hover:text-red-400 ml-2 underline transition-colors">Cancelar</button>
         </div>
       </div>
 
       <!-- ================= PASO 1: SELECCIÓN DE FORMATO ================= -->
-      <div id="step-1-content" class="space-y-8 animate-float">
-        <div class="text-center max-w-2xl mx-auto">
-          <span class="text-xs font-bold uppercase tracking-widest text-gold-500 mb-1 inline-block">Catálogo de Recuerdos Funerarios</span>
-          <h2 class="font-cinzel text-2xl sm:text-4xl font-bold gold-gradient-text mb-3">Selecciona el Formato Deseado</h2>
-          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Personaliza e imprime recuerdos solemnes de novenario listos para entrega familiar (4 por pliego).</p>
+      <div id="step-1-content" class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto pt-4">
+          <span class="text-xs font-bold uppercase tracking-widest text-gold-500 mb-2 inline-flex items-center gap-1 px-3.5 py-1 rounded-full bg-gold-500/10 border border-gold-500/30">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Catálogo Oficial de Recuerdos Solemnes
+          </span>
+          <h2 class="font-cinzel text-3xl sm:text-4xl font-extrabold gold-text-gradient mb-3">Selecciona el Formato Deseado</h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+            Diseña e imprime recuerdos funerarios listos para entrega familiar, optimizados a 4 piezas por pliego carta horizontal o vertical con corte exacto.
+          </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <!-- Formato 1: Librito Díptico a Doble Cara (Recomendado Funerarias) -->
-          <div onclick="app.selectFormat('librito')" id="card-format-librito" class="group relative cursor-pointer rounded-3xl p-7 glass-panel border-2 border-gold-500 shadow-2xl flex flex-col items-center text-center transition-all duration-300 hover:scale-[1.02]">
-            <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-bgreen-800 to-bpurple-800 text-gold-300 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-lg border border-gold-500/30">
-              <i data-lucide="book-open" class="w-10 h-10"></i>
+          <!-- Formato 1: Librito Díptico a Doble Cara -->
+          <div onclick="app.selectFormat('librito')" id="card-format-librito" class="group relative cursor-pointer rounded-3xl p-8 glass-card border-2 border-gold-400 shadow-2xl ring-4 ring-gold-500/25 flex flex-col items-center text-center transition-all duration-300 scale-[1.02] bg-gradient-to-b from-bgreen-900/20 to-bpurple-900/30">
+            <div id="check-icon-librito" class="absolute top-5 left-5 w-8 h-8 rounded-full bg-gold-500 text-slate-950 flex items-center justify-center font-black shadow-lg">
+              <i data-lucide="check" class="w-5 h-5 stroke-[3]"></i>
+            </div>
+            
+            <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-bgreen-800 via-bpurple-800 to-gold-500/80 text-white flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-xl border border-gold-500/50 p-4">
+              <i data-lucide="book-open" class="w-10 h-10 text-gold-300"></i>
             </div>
             <span class="absolute top-5 right-5 px-3 py-1 rounded-full text-[10px] font-black bg-gradient-to-r from-gold-500 to-gold-400 text-slate-950 tracking-wider uppercase shadow-md">
-              Oficial Funeraria
+              Oficial Funeraria (Dúplex)
             </span>
             <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2.5">Librito Díptico (Doble Cara)</h3>
             <p class="text-xs text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
-              Folleto conmemorativo plegable a dos caras (frente y vuelta en pliego horizontal). Cara exterior con santo y logotipo corporativo; cara interior con plegaria de novenario, agradecimiento familiar, paloma con olivo y fechas sacramentales.
+              Folleto conmemorativo plegable a 2 caras (frente y vuelta en pliego horizontal). Cara exterior con santo y logotipo corporativo; cara interior con plegaria de novenario, agradecimiento familiar, paloma con olivo y fechas sacramentales.
             </p>
-            <div class="mt-auto w-full pt-4 border-t border-slate-200 dark:border-bpurple-800/40 flex items-center justify-between text-xs text-gold-500 font-semibold">
-              <span class="flex items-center gap-1.5"><i data-lucide="copy" class="w-4 h-4"></i> 4 por hoja (Dúplex)</span>
-              <span class="flex items-center gap-1">Seleccionado <i data-lucide="check-circle" class="w-4 h-4"></i></span>
+            <div class="mt-auto w-full pt-4 border-t border-slate-200 dark:border-bpurple-800/40 flex items-center justify-between text-xs">
+              <span class="flex items-center gap-1.5 text-gold-500 font-bold"><i data-lucide="layers" class="w-4 h-4"></i> 4 por hoja (Dúplex)</span>
+              <span id="badge-status-librito" class="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gold-500 text-slate-950 font-black shadow-md">
+                <i data-lucide="check-circle-2" class="w-4 h-4"></i> SELECCIONADO
+              </span>
             </div>
           </div>
 
-          <!-- Formato 2: Separador de Libros (Bookmark) -->
-          <div onclick="app.selectFormat('separador')" id="card-format-separador" class="group relative cursor-pointer rounded-3xl p-7 glass-panel border-2 border-slate-300 dark:border-bgreen-900/50 hover:border-gold-400/80 shadow-xl flex flex-col items-center text-center transition-all duration-300 hover:scale-[1.02]">
-            <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-bgreen-900 to-bpurple-950 text-gold-400 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-lg border border-bpurple-700/30">
+          <!-- Formato 2: Separador de Libros (Bookmark 4 en Fila Dúplex) -->
+          <div onclick="app.selectFormat('separador')" id="card-format-separador" class="group relative cursor-pointer rounded-3xl p-8 glass-card border border-slate-300 dark:border-slate-800 opacity-65 hover:opacity-100 hover:border-gold-400/60 shadow-xl flex flex-col items-center text-center transition-all duration-300 hover:scale-[1.01]">
+            <div id="check-icon-separador" class="hidden absolute top-5 left-5 w-8 h-8 rounded-full bg-gold-500 text-slate-950 items-center justify-center font-black shadow-lg">
+              <i data-lucide="check" class="w-5 h-5 stroke-[3]"></i>
+            </div>
+
+            <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-bgreen-900 to-bpurple-950 text-gold-400 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-xl border border-bpurple-700/40 p-4">
               <i data-lucide="bookmark" class="w-10 h-10"></i>
             </div>
-            <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2.5">Separador de Libro (Individual)</h3>
+            <span class="absolute top-5 right-5 px-3 py-1 rounded-full text-[10px] font-black bg-gradient-to-r from-bpurple-700 to-bpurple-900 text-gold-300 tracking-wider uppercase shadow-md border border-gold-500/30">
+              4 en Fila (Dúplex)
+            </span>
+            <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2.5">Separadores en Fila (Dúplex)</h3>
             <p class="text-xs text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
-              Elegante tarjeta vertical marcapáginas individual. Contiene estampa de devoción, foto o símbolo del difunto, datos sacramentales y oración pía.
+              4 separadores verticales dispuestos uno al lado del otro en pliego horizontal. Cara frontal con foto centrada grande del finado, fechas, oración y santo al pie de página; cara trasera con contraportada y datos oficiales de la funeraria.
             </p>
-            <div class="mt-auto w-full pt-4 border-t border-slate-200 dark:border-bpurple-800/40 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-              <span class="flex items-center gap-1.5"><i data-lucide="copy" class="w-4 h-4"></i> 4 por hoja</span>
-              <span class="flex items-center gap-1 font-semibold group-hover:text-gold-400">Seleccionar <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+            <div class="mt-auto w-full pt-4 border-t border-slate-200 dark:border-bpurple-800/40 flex items-center justify-between text-xs">
+              <span class="flex items-center gap-1.5 text-slate-500 dark:text-slate-400"><i data-lucide="copy" class="w-4 h-4"></i> 4 en pliego horizontal</span>
+              <span id="badge-status-separador" class="flex items-center gap-1.5 px-3 py-1 text-slate-500 dark:text-slate-400 hover:text-gold-400 font-bold transition-colors">
+                <i data-lucide="circle" class="w-4 h-4"></i> Clic para Seleccionar
+              </span>
             </div>
           </div>
         </div>
 
-        <div class="text-center pt-2">
-          <button onclick="app.goToStep(2)" class="px-10 py-3.5 rounded-2xl gradient-gold-btn text-sm tracking-wider uppercase font-black shadow-xl transition-all">
-            Continuar con los Datos →
+        <div class="text-center pt-3">
+          <button onclick="app.goToStep(2)" class="px-12 py-4 rounded-2xl btn-gold-luxury text-sm tracking-wider uppercase font-black shadow-2xl transition-all">
+            Continuar con los Datos & Diseño →
           </button>
         </div>
       </div>
@@ -224,16 +281,19 @@
         
         <!-- Columna Izquierda: Formulario de Datos (7 columnas) -->
         <div class="lg:col-span-7 space-y-6">
-          <div class="glass-panel rounded-3xl p-6 sm:p-7 shadow-2xl space-y-6">
+          <div class="glass-card rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6 border border-slate-200 dark:border-bpurple-800/40">
             
             <div class="flex items-center justify-between border-b border-slate-200 dark:border-bpurple-800/40 pb-4">
-              <div class="flex items-center gap-2.5">
-                <div class="w-8 h-8 rounded-xl bg-bgreen-800 text-gold-400 flex items-center justify-center">
-                  <i data-lucide="user-check" class="w-4 h-4"></i>
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-bgreen-800 to-bpurple-800 text-gold-400 flex items-center justify-center shadow-md border border-gold-500/30">
+                  <i data-lucide="user-check" class="w-5 h-5"></i>
                 </div>
-                <h3 class="font-cinzel text-lg font-bold text-slate-900 dark:text-white">Datos del Finado y Novenario</h3>
+                <div>
+                  <h3 class="font-cinzel text-lg font-bold text-slate-900 dark:text-white">Datos del Finado y Novenario</h3>
+                  <p class="text-xs text-slate-500 dark:text-slate-400">Completa la información para sincronizar la esquela en vivo</p>
+                </div>
               </div>
-              <span id="label-current-format" class="text-xs px-3 py-1 rounded-xl bg-bpurple-900/40 text-gold-300 border border-bpurple-700/40 font-semibold">
+              <span id="label-current-format" class="text-xs px-3.5 py-1.5 rounded-xl bg-bpurple-900/30 dark:bg-bpurple-900/60 text-bpurple-900 dark:text-gold-300 border border-bpurple-600/40 font-bold shadow-sm">
                 Formato: Librito Díptico
               </span>
             </div>
@@ -243,7 +303,7 @@
               <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2" for="input-nombre">
                 Nombre Completo del Finado <span class="text-gold-500">*</span>
               </label>
-              <input type="text" id="input-nombre" placeholder="Ej: María Ángela Martínez Vázquez" class="w-full px-4 py-3 rounded-2xl bg-white/70 dark:bg-bgreen-950/80 border border-slate-300 dark:border-bpurple-700/50 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 text-sm font-semibold transition-all" oninput="app.updatePreview()">
+              <input type="text" id="input-nombre" placeholder="Ej: María Ángela Martínez Vázquez" class="w-full px-4 py-3 rounded-2xl input-luxury placeholder-slate-400 focus:outline-none text-sm font-semibold transition-all" oninput="app.updatePreview()">
             </div>
 
             <!-- Campo: Familia que Agradece -->
@@ -253,7 +313,7 @@
               </label>
               <div class="relative">
                 <span class="absolute left-4 top-3 text-xs text-slate-400 font-serif italic font-bold">La Familia</span>
-                <input type="text" id="input-familia" placeholder="Sifuentes / Morales Delgado" class="w-full pl-28 pr-4 py-3 rounded-2xl bg-white/70 dark:bg-bgreen-950/80 border border-slate-300 dark:border-bpurple-700/50 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-gold-500 text-sm font-bold tracking-wide transition-all" oninput="app.updatePreview()">
+                <input type="text" id="input-familia" placeholder="Sifuentes / Morales Delgado" class="w-full pl-28 pr-4 py-3 rounded-2xl input-luxury placeholder-slate-400 focus:outline-none text-sm font-bold tracking-wide transition-all" oninput="app.updatePreview()">
               </div>
             </div>
 
@@ -263,13 +323,13 @@
                 <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2" for="input-fecha-nac">
                   Fecha de Nacimiento (*)
                 </label>
-                <input type="date" id="input-fecha-nac" class="w-full px-4 py-2.5 rounded-2xl bg-white/70 dark:bg-bgreen-950/80 border border-slate-300 dark:border-bpurple-700/50 text-slate-900 dark:text-white focus:outline-none focus:border-gold-500 text-sm transition-all" oninput="app.updatePreview()">
+                <input type="date" id="input-fecha-nac" class="w-full px-4 py-2.5 rounded-2xl input-luxury focus:outline-none text-sm transition-all" oninput="app.updatePreview()">
               </div>
               <div>
                 <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2" for="input-fecha-def">
                   Fecha de Defunción (†)
                 </label>
-                <input type="date" id="input-fecha-def" class="w-full px-4 py-2.5 rounded-2xl bg-white/70 dark:bg-bgreen-950/80 border border-slate-300 dark:border-bpurple-700/50 text-slate-900 dark:text-white focus:outline-none focus:border-gold-500 text-sm transition-all" oninput="app.updatePreview()">
+                <input type="date" id="input-fecha-def" class="w-full px-4 py-2.5 rounded-2xl input-luxury focus:outline-none text-sm transition-all" oninput="app.updatePreview()">
               </div>
             </div>
 
@@ -279,28 +339,28 @@
                 <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2" for="input-lugar">
                   Lugar del Novenario
                 </label>
-                <input type="text" id="input-lugar" placeholder="Ej: Huejúcar, Jalisco" class="w-full px-4 py-2.5 rounded-2xl bg-white/70 dark:bg-bgreen-950/80 border border-slate-300 dark:border-bpurple-700/50 text-slate-900 dark:text-white focus:outline-none focus:border-gold-500 text-sm transition-all" oninput="app.updatePreview()">
+                <input type="text" id="input-lugar" placeholder="Ej: Huejúcar, Jalisco" class="w-full px-4 py-2.5 rounded-2xl input-luxury focus:outline-none text-sm transition-all" oninput="app.updatePreview()">
               </div>
               <div>
                 <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2" for="input-fecha-nov">
                   Mes / Año del Novenario
                 </label>
-                <input type="text" id="input-fecha-nov" placeholder="Ej: Marzo del 2026" class="w-full px-4 py-2.5 rounded-2xl bg-white/70 dark:bg-bgreen-950/80 border border-slate-300 dark:border-bpurple-700/50 text-slate-900 dark:text-white focus:outline-none focus:border-gold-500 text-sm transition-all" oninput="app.updatePreview()">
+                <input type="text" id="input-fecha-nov" placeholder="Ej: Marzo del 2026" class="w-full px-4 py-2.5 rounded-2xl input-luxury focus:outline-none text-sm transition-all" oninput="app.updatePreview()">
               </div>
             </div>
 
             <!-- Campo: Oración de Portada (Exterior) -->
             <div class="border-t border-slate-200 dark:border-bpurple-800/40 pt-5">
               <div class="flex items-center justify-between mb-2">
-                <label class="block text-xs font-bold text-gold-500 uppercase tracking-wider" for="input-oracion">
-                  📖 Oración de Portada (debajo del santo)
+                <label class="block text-xs font-bold text-gold-500 uppercase tracking-wider flex items-center gap-1.5" for="input-oracion">
+                  <i data-lucide="book" class="w-3.5 h-3.5"></i> Oración de Portada (debajo del santo)
                 </label>
                 <span id="char-counter" class="text-xs font-mono text-gold-400 font-semibold">0 / 200</span>
               </div>
               
               <!-- Selector de Oraciones Populares de Portada -->
               <div class="mb-2.5">
-                <select id="select-oracion-preset" onchange="app.applyPrayerPreset(this.value)" class="w-full px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-bpurple-950/80 text-xs text-bpurple-900 dark:text-gold-200 border border-slate-300 dark:border-bpurple-700/40 focus:outline-none focus:border-gold-500 font-medium">
+                <select id="select-oracion-preset" onchange="app.applyPrayerPreset(this.value)" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-100 dark:bg-bpurple-950/90 text-xs text-bpurple-900 dark:text-gold-200 border border-slate-300 dark:border-bpurple-700/40 focus:outline-none focus:border-gold-500 font-medium shadow-inner">
                   <option value="">✨ Seleccionar oración sugerida para portada...</option>
                   <option value="Señor: nosotros a cuyos labios acercaste el amargo cáliz del dolor; bendecimos tu voluntad y te pedimos no separar en el cielo a los que en la tierra formábamos una familia.">1. Amargo cáliz del dolor (Tradicional Funeraria)</option>
                   <option value="Señor, dale el descanso eterno y brille para él/ella la luz perpetua. Que en tu infinita misericordia descanse en paz. Amén.">2. Descanso eterno y luz perpetua</option>
@@ -309,15 +369,15 @@
                 </select>
               </div>
 
-              <textarea id="input-oracion" maxlength="200" rows="2" placeholder="Escribe la oración de portada..." class="w-full px-4 py-2.5 rounded-2xl bg-white/70 dark:bg-bgreen-950/80 border border-slate-300 dark:border-bpurple-700/50 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-gold-500 text-xs transition-all resize-none font-serif italic" oninput="app.updatePreview()"></textarea>
+              <textarea id="input-oracion" maxlength="200" rows="2" placeholder="Escribe la oración de portada..." class="w-full px-4 py-2.5 rounded-2xl input-luxury placeholder-slate-400 focus:outline-none text-xs transition-all resize-none font-serif italic" oninput="app.updatePreview()"></textarea>
             </div>
 
             <!-- Campo: Oración Interior (Plegaria de Novenario) -->
             <div id="container-oracion-interior" class="border-t border-slate-200 dark:border-bpurple-800/40 pt-5">
-              <label class="block text-xs font-bold text-gold-500 uppercase tracking-wider mb-2" for="input-oracion-interior">
-                🙏 Plegaria Interior del Novenario (Página izquierda interior)
+              <label class="block text-xs font-bold text-gold-500 uppercase tracking-wider mb-2 flex items-center gap-1.5" for="input-oracion-interior">
+                <i data-lucide="feather" class="w-3.5 h-3.5"></i> Plegaria Interior del Novenario (Página izquierda interior)
               </label>
-              <textarea id="input-oracion-interior" rows="4" placeholder="Plegaria solemne de novenario..." class="w-full px-4 py-2.5 rounded-2xl bg-white/70 dark:bg-bgreen-950/80 border border-slate-300 dark:border-bpurple-700/50 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-gold-500 text-xs transition-all resize-none leading-relaxed font-serif italic" oninput="app.updatePreview()"></textarea>
+              <textarea id="input-oracion-interior" rows="4" placeholder="Plegaria solemne de novenario..." class="w-full px-4 py-2.5 rounded-2xl input-luxury placeholder-slate-400 focus:outline-none text-xs transition-all resize-none leading-relaxed font-serif italic" oninput="app.updatePreview()"></textarea>
             </div>
 
             <!-- Campo: Fotografía / Símbolo del Finado -->
@@ -334,20 +394,20 @@
                 <div class="space-y-2 flex-1">
                   <input type="file" id="input-foto-finado" accept="image/*" class="hidden" onchange="app.handlePhotoUpload(event)">
                   <div class="flex flex-wrap gap-2">
-                    <button type="button" onclick="app.useDefaultPhoto('paloma_lineart')" class="px-3.5 py-2 rounded-xl bg-bgreen-800/20 dark:bg-bgreen-800/40 text-bgreen-900 dark:text-gold-300 border border-gold-500/40 text-xs font-bold flex items-center gap-1.5 shadow-sm">
-                      <i data-lucide="feather" class="w-3.5 h-3.5 text-gold-400"></i> Paloma Novenario (Tradicional)
+                    <button type="button" onclick="app.useDefaultPhoto('paloma_lineart')" class="px-3.5 py-2 rounded-xl bg-bgreen-800/15 dark:bg-bgreen-800/40 text-bgreen-900 dark:text-gold-300 border border-gold-500/40 text-xs font-bold flex items-center gap-1.5 shadow-sm hover:scale-105 transition-transform">
+                      <i data-lucide="feather" class="w-3.5 h-3.5 text-gold-500"></i> Paloma Novenario
                     </button>
-                    <button type="button" onclick="document.getElementById('input-foto-finado').click()" class="px-3.5 py-2 rounded-xl bg-bpurple-800/20 dark:bg-bpurple-800/40 text-bpurple-900 dark:text-white border border-bpurple-600/40 text-xs font-semibold flex items-center gap-1.5">
-                      <i data-lucide="upload" class="w-3.5 h-3.5"></i> Subir Foto Personalizada
+                    <button type="button" onclick="document.getElementById('input-foto-finado').click()" class="px-3.5 py-2 rounded-xl bg-bpurple-800/20 dark:bg-bpurple-800/40 text-bpurple-900 dark:text-white border border-bpurple-600/40 text-xs font-semibold flex items-center gap-1.5 hover:scale-105 transition-transform">
+                      <i data-lucide="upload" class="w-3.5 h-3.5"></i> Subir Foto
                     </button>
-                    <button type="button" onclick="app.useDefaultPhoto('cruz')" class="px-3 py-1.5 rounded-xl bg-slate-200 dark:bg-bgreen-950 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-800 text-xs font-medium flex items-center gap-1">
-                      <i data-lucide="cross" class="w-3 h-3 text-gold-400"></i> Cruz
+                    <button type="button" onclick="app.useDefaultPhoto('cruz')" class="px-3 py-1.5 rounded-xl bg-slate-200 dark:bg-bgreen-950 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-800 text-xs font-medium flex items-center gap-1 hover:border-gold-500/40 transition-colors">
+                      <i data-lucide="cross" class="w-3 h-3 text-gold-500"></i> Cruz
                     </button>
-                    <button type="button" onclick="app.useDefaultPhoto('vela')" class="px-3 py-1.5 rounded-xl bg-slate-200 dark:bg-bgreen-950 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-800 text-xs font-medium flex items-center gap-1">
-                      <i data-lucide="flame" class="w-3 h-3 text-amber-400"></i> Vela
+                    <button type="button" onclick="app.useDefaultPhoto('vela')" class="px-3 py-1.5 rounded-xl bg-slate-200 dark:bg-bgreen-950 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-800 text-xs font-medium flex items-center gap-1 hover:border-gold-500/40 transition-colors">
+                      <i data-lucide="flame" class="w-3 h-3 text-amber-500"></i> Vela
                     </button>
                   </div>
-                  <p class="text-[11px] text-slate-500">Puedes usar la tradicional paloma de la paz con olivo o la fotografía del finado.</p>
+                  <p class="text-[11px] text-slate-500">Puedes usar la tradicional paloma de la paz con olivo o cargar la foto del ser querido.</p>
                 </div>
               </div>
             </div>
@@ -358,13 +418,13 @@
                 <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                   Santo de Devoción (Portada) <span class="text-gold-500">*</span>
                 </label>
-                <button type="button" onclick="saintsManager.openAddModal()" class="text-xs text-gold-500 hover:text-gold-400 font-bold flex items-center gap-1 underline">
+                <button type="button" onclick="saintsManager.openAddModal()" class="text-xs text-gold-500 hover:text-gold-400 font-bold flex items-center gap-1 underline transition-colors">
                   <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i> Agregar Nuevo Santo
                 </button>
               </div>
 
               <!-- Cuadrícula de Santos -->
-              <div id="saints-selector-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-h-56 overflow-y-auto p-1.5 bg-slate-100/50 dark:bg-bgreen-950/60 rounded-2xl border border-slate-300 dark:border-bpurple-800/30">
+              <div id="saints-selector-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-h-56 overflow-y-auto p-2.5 bg-slate-100/60 dark:bg-bgreen-950/60 rounded-2xl border border-slate-300 dark:border-bpurple-800/30">
                 <!-- Rellenado dinámico con JavaScript -->
               </div>
             </div>
@@ -372,12 +432,12 @@
             <!-- Campo Opcional: Datos de la Funeraria (Contraportada) -->
             <div class="border-t border-slate-200 dark:border-bpurple-800/40 pt-5">
               <details class="group">
-                <summary class="cursor-pointer text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-gold-500 flex items-center justify-between">
+                <summary class="cursor-pointer text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-gold-500 flex items-center justify-between transition-colors">
                   <span class="flex items-center gap-2"><i data-lucide="building-2" class="w-4 h-4 text-bgreen-600 dark:text-gold-400"></i> Datos Corporativos Funeraria (Contraportada)</span>
                   <i data-lucide="chevron-down" class="w-4 h-4 group-open:rotate-180 transition-transform"></i>
                 </summary>
                 <div class="mt-3 space-y-2">
-                  <textarea id="input-datos-funeraria" rows="4" class="w-full px-4 py-2.5 rounded-2xl bg-white/70 dark:bg-bgreen-950/80 border border-slate-300 dark:border-bpurple-700/50 text-slate-900 dark:text-white text-xs font-mono" oninput="app.updatePreview()"></textarea>
+                  <textarea id="input-datos-funeraria" rows="4" class="w-full px-4 py-2.5 rounded-2xl input-luxury text-xs font-mono" oninput="app.updatePreview()"></textarea>
                   <p class="text-[10px] text-slate-500">Logotipo y datos preconfigurados con la información oficial de Perpetuo Socorro.</p>
                 </div>
               </details>
@@ -385,16 +445,16 @@
 
             <!-- Botones de Acción -->
             <div class="border-t border-slate-200 dark:border-bpurple-800/40 pt-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-              <button type="button" onclick="app.goToStep(1)" class="w-full sm:w-auto px-5 py-2.5 rounded-2xl bg-slate-200 dark:bg-bgreen-950 hover:bg-slate-300 dark:hover:bg-bgreen-900 text-xs font-bold text-slate-700 dark:text-slate-300 transition-all flex items-center justify-center gap-1.5">
+              <button type="button" onclick="app.goToStep(1)" class="w-full sm:w-auto px-6 py-3 rounded-2xl bg-slate-200 dark:bg-bgreen-950 hover:bg-slate-300 dark:hover:bg-bgreen-900 text-xs font-bold text-slate-700 dark:text-slate-300 transition-all flex items-center justify-center gap-1.5 border border-slate-300 dark:border-slate-800">
                 ← Cambiar Formato
               </button>
 
               <div class="flex items-center gap-2 w-full sm:w-auto">
-                <button type="button" onclick="app.saveCurrentEsquela(false)" class="flex-1 sm:flex-initial px-5 py-3 rounded-2xl bg-bgreen-900/30 hover:bg-bgreen-900/50 border border-gold-500/40 text-gold-400 font-bold text-xs transition-all flex items-center justify-center gap-1.5">
+                <button type="button" onclick="app.saveCurrentEsquela(false)" class="flex-1 sm:flex-initial px-6 py-3 rounded-2xl bg-bgreen-900/30 hover:bg-bgreen-900/50 border border-gold-500/40 text-gold-500 dark:text-gold-400 font-bold text-xs transition-all flex items-center justify-center gap-1.5">
                   <i data-lucide="save" class="w-4 h-4"></i> Guardar
                 </button>
-                <button type="button" onclick="app.goToStep(3)" class="flex-1 sm:flex-initial px-8 py-3 rounded-2xl gradient-gold-btn text-slate-950 font-black text-xs tracking-wider uppercase shadow-xl transition-all flex items-center justify-center gap-1.5">
-                  Ver Hoja Horizontal (4x) & PDF →
+                <button type="button" onclick="app.goToStep(3)" class="flex-1 sm:flex-initial px-9 py-3 rounded-2xl btn-gold-luxury text-slate-950 font-black text-xs tracking-wider uppercase shadow-xl transition-all flex items-center justify-center gap-1.5">
+                  Ver Pliego (4x) & PDF →
                 </button>
               </div>
             </div>
@@ -407,23 +467,24 @@
           <div class="sticky top-24">
             <div class="flex items-center justify-between mb-2">
               <h3 class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                <i data-lucide="eye" class="w-4 h-4 text-gold-500"></i> Vista Previa en Vivo
+                <i data-lucide="eye" class="w-4 h-4 text-gold-500"></i> Maqueta en Vivo (Frente / Vuelta)
               </h3>
 
               <!-- Selector de Cara Exterior / Interior para Librito -->
               <div id="preview-face-switcher" class="flex items-center bg-slate-200 dark:bg-bgreen-950/80 p-1 rounded-xl border border-slate-300 dark:border-bpurple-800/40 text-[11px]">
-                <button id="btn-preview-exterior" onclick="app.setPreviewFace('exterior')" class="px-3 py-1 rounded-lg bg-gradient-to-r from-bgreen-800 to-bpurple-800 text-white font-bold transition-all shadow-sm">
+                <button id="btn-preview-exterior" onclick="app.setPreviewFace('exterior')" class="px-3.5 py-1 rounded-lg bg-gradient-to-r from-bgreen-800 to-bpurple-800 text-white font-bold transition-all shadow-sm">
                   Cara Exterior
                 </button>
-                <button id="btn-preview-interior" onclick="app.setPreviewFace('interior')" class="px-3 py-1 rounded-lg text-slate-600 dark:text-slate-400 hover:text-white transition-all font-semibold">
+                <button id="btn-preview-interior" onclick="app.setPreviewFace('interior')" class="px-3.5 py-1 rounded-lg text-slate-600 dark:text-slate-400 hover:text-bpurple-900 dark:hover:text-white transition-all font-semibold">
                   Cara Interior
                 </button>
               </div>
             </div>
 
             <!-- Contenedor del Preview Individual con Estilos Solemnes -->
-            <div class="glass-panel p-4 rounded-3xl flex items-center justify-center min-h-[460px] overflow-hidden shadow-2xl">
-              <div id="single-preview-container" class="transition-all duration-300 transform scale-95 origin-top shadow-2xl rounded-sm">
+            <div class="glass-card p-6 rounded-3xl flex items-center justify-center min-h-[470px] overflow-hidden shadow-2xl border border-slate-200 dark:border-bpurple-800/40 relative">
+              <div class="absolute inset-0 bg-gradient-to-b from-bpurple-900/10 to-transparent pointer-events-none rounded-3xl"></div>
+              <div id="single-preview-container" class="real-booklet-mockup transition-all duration-300 transform scale-95 origin-top shadow-2xl rounded-sm">
                 <!-- Se inyecta la cara correspondiente del librito dinámicamente -->
               </div>
             </div>
@@ -436,39 +497,39 @@
       <div id="step-3-content" class="hidden space-y-6">
         
         <!-- Barra de Herramientas de Impresión -->
-        <div class="no-print glass-panel p-5 rounded-3xl flex flex-wrap items-center justify-between gap-4 shadow-2xl">
+        <div class="no-print glass-card p-5 rounded-3xl flex flex-wrap items-center justify-between gap-4 shadow-2xl border border-slate-200 dark:border-bpurple-800/40">
           <div class="flex items-center gap-3">
-            <button onclick="app.goToStep(2)" class="px-4 py-2.5 rounded-2xl bg-slate-200 dark:bg-bgreen-950 hover:bg-slate-300 dark:hover:bg-bgreen-900 text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5 transition-all">
+            <button onclick="app.goToStep(2)" class="px-4 py-2.5 rounded-2xl bg-slate-200 dark:bg-bgreen-950 hover:bg-slate-300 dark:hover:bg-bgreen-900 text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5 transition-all border border-slate-300 dark:border-slate-800">
               ← Editar Datos
             </button>
             <div>
-              <h3 class="font-cinzel text-sm sm:text-base font-bold text-slate-900 dark:text-white">Hoja Horizontal de Impresión (4 por Hoja)</h3>
+              <h3 class="font-cinzel text-sm sm:text-base font-bold text-slate-900 dark:text-white">Pliego Horizontal de Impresión (4 por Hoja)</h3>
               <p class="text-[11px] text-slate-500 dark:text-slate-400">PDF con 2 Páginas Horizontales listo para impresión a doble cara (Dúplex).</p>
             </div>
           </div>
 
           <!-- Selector de Página a Visualizar en Pantalla -->
-          <div class="flex items-center gap-2">
+          <div class="flex items-center gap-2 flex-wrap">
             <div class="flex items-center bg-slate-200 dark:bg-bgreen-950 p-1 rounded-2xl border border-slate-300 dark:border-bpurple-800/40 text-xs font-semibold">
-              <button id="btn-sheet-exterior" onclick="app.setSheetView('exterior')" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-bgreen-800 to-bpurple-800 text-white shadow-sm transition-all">
+              <button id="btn-sheet-exterior" onclick="app.setSheetView('exterior')" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-bgreen-800 to-bpurple-800 text-white shadow-sm transition-all font-bold">
                 Pág 1: Exterior (4x)
               </button>
-              <button id="btn-sheet-interior" onclick="app.setSheetView('interior')" class="px-3.5 py-1.5 rounded-xl text-slate-600 dark:text-slate-400 hover:text-white transition-all">
+              <button id="btn-sheet-interior" onclick="app.setSheetView('interior')" class="px-3.5 py-1.5 rounded-xl text-slate-600 dark:text-slate-400 hover:text-bpurple-900 dark:hover:text-white transition-all">
                 Pág 2: Interior (4x)
               </button>
             </div>
 
             <button onclick="window.print()" class="px-4 py-2.5 rounded-2xl bg-bpurple-900/30 hover:bg-bpurple-900/50 text-bpurple-900 dark:text-bpurple-200 font-bold text-xs border border-bpurple-600/40 transition-all flex items-center gap-1.5">
-              <i data-lucide="printer" class="w-4 h-4 text-gold-400"></i> Imprimir
+              <i data-lucide="printer" class="w-4 h-4 text-gold-500"></i> Imprimir
             </button>
-            <button id="btn-download-pdf" onclick="pdfGenerator.downloadCurrentSheetPDF()" class="px-6 py-2.5 rounded-2xl gradient-gold-btn text-slate-950 font-black text-xs tracking-wider uppercase shadow-xl transition-all flex items-center gap-1.5">
+            <button id="btn-download-pdf" onclick="pdfGenerator.downloadCurrentSheetPDF()" class="px-7 py-2.5 rounded-2xl btn-gold-luxury text-slate-950 font-black text-xs tracking-wider uppercase shadow-xl transition-all flex items-center gap-1.5">
               <i data-lucide="download" class="w-4 h-4"></i> Descargar PDF Dúplex (Horizontal)
             </button>
           </div>
         </div>
 
         <!-- Vista de la Hoja Completa (4 Esquelas por Hoja) -->
-        <div class="flex justify-center p-2 sm:p-6 glass-panel rounded-3xl overflow-x-auto shadow-2xl">
+        <div class="flex justify-center p-2 sm:p-6 glass-card rounded-3xl overflow-x-auto shadow-2xl border border-slate-200 dark:border-bpurple-800/40">
           <div id="print-sheet-container" class="sheet-letter-landscape p-5 relative select-none">
             <!-- Líneas de corte centrales punteadas -->
             <div class="cut-mark-horizontal top-1/2"></div>
@@ -495,14 +556,14 @@
     <!-- PESTAÑA 2: HISTORIAL DE ESQUELAS GUARDADAS                      -->
     <!-- ============================================================== -->
     <div id="tab-history" class="hidden space-y-6">
-      <div class="glass-panel p-6 rounded-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-2xl">
+      <div class="glass-card p-6 sm:p-8 rounded-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-2xl border border-slate-200 dark:border-bpurple-800/40">
         <div>
-          <h2 class="font-cinzel text-2xl sm:text-3xl font-bold gold-gradient-text">Registro de Esquelas Guardadas</h2>
+          <h2 class="font-cinzel text-2xl sm:text-3xl font-bold gold-text-gradient">Registro de Esquelas Guardadas</h2>
           <p class="text-xs text-slate-500 dark:text-slate-400">Consulta, reedita o vuelve a descargar en PDF cualquier recuerdo creado en el sistema.</p>
         </div>
         <div class="w-full sm:w-80">
           <div class="relative">
-            <input type="text" id="search-esquelas" placeholder="Buscar por difunto o familia..." oninput="app.filterEsquelas()" class="w-full pl-10 pr-4 py-2.5 rounded-2xl bg-white/70 dark:bg-bgreen-950/80 border border-slate-300 dark:border-bpurple-700/50 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-gold-500">
+            <input type="text" id="search-esquelas" placeholder="Buscar por difunto o familia..." oninput="app.filterEsquelas()" class="w-full pl-10 pr-4 py-2.5 rounded-2xl input-luxury text-xs placeholder-slate-400 focus:outline-none">
             <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3"></i>
           </div>
         </div>
@@ -513,13 +574,13 @@
         <!-- Renderizado dinámico -->
       </div>
       
-      <div id="empty-esquelas-state" class="hidden text-center py-20 glass-panel rounded-3xl shadow-xl">
+      <div id="empty-esquelas-state" class="hidden text-center py-20 glass-card rounded-3xl shadow-xl border border-slate-200 dark:border-bpurple-800/30">
         <div class="w-16 h-16 rounded-2xl bg-bpurple-900/30 text-gold-400 flex items-center justify-center mx-auto mb-4 border border-bpurple-700/30">
           <i data-lucide="folder-open" class="w-8 h-8"></i>
         </div>
         <h3 class="font-cinzel text-lg font-bold text-slate-800 dark:text-slate-200 mb-1">No hay esquelas registradas aún</h3>
         <p class="text-xs text-slate-500 mb-5">Crea tu primera esquela y se almacenará automáticamente en la base de datos.</p>
-        <button onclick="app.switchTab('editor')" class="px-6 py-2.5 rounded-2xl gradient-gold-btn text-slate-950 font-bold text-xs uppercase tracking-wider">
+        <button onclick="app.switchTab('editor')" class="px-6 py-2.5 rounded-2xl btn-gold-luxury text-slate-950 font-bold text-xs uppercase tracking-wider">
           + Crear Nueva Esquela
         </button>
       </div>
@@ -529,12 +590,12 @@
     <!-- PESTAÑA 3: MÓDULO DE GESTIÓN DE SANTOS DE DEVOCIÓN             -->
     <!-- ============================================================== -->
     <div id="tab-saints" class="hidden space-y-6">
-      <div class="glass-panel p-6 rounded-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-2xl">
+      <div class="glass-card p-6 sm:p-8 rounded-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-2xl border border-slate-200 dark:border-bpurple-800/40">
         <div>
-          <h2 class="font-cinzel text-2xl sm:text-3xl font-bold gold-gradient-text">Catálogo de Santos de Devoción</h2>
+          <h2 class="font-cinzel text-2xl sm:text-3xl font-bold gold-text-gradient">Catálogo de Santos de Devoción</h2>
           <p class="text-xs text-slate-500 dark:text-slate-400">Administra y agrega santos disponibles para los recuerdos de novenario.</p>
         </div>
-        <button onclick="saintsManager.openAddModal()" class="px-5 py-2.5 rounded-2xl gradient-gold-btn text-slate-950 font-bold text-xs shadow-xl flex items-center gap-2 uppercase tracking-wider">
+        <button onclick="saintsManager.openAddModal()" class="px-6 py-3 rounded-2xl btn-gold-luxury text-slate-950 font-bold text-xs shadow-xl flex items-center gap-2 uppercase tracking-wider">
           <i data-lucide="plus-circle" class="w-4 h-4"></i> Agregar Nuevo Santo
         </button>
       </div>
@@ -548,26 +609,26 @@
   </main>
 
   <!-- ================= FOOTER ================= -->
-  <footer class="no-print mt-auto py-6 border-t border-slate-200 dark:border-bpurple-800/30 glass-panel text-center text-xs text-slate-500 dark:text-slate-400">
+  <footer class="no-print mt-auto py-6 border-t border-slate-200 dark:border-bpurple-800/30 glass-card text-center text-xs text-slate-500 dark:text-slate-400">
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
       <div class="flex items-center gap-2">
         <img src="/static/img/defaults/logo_perpetuo_socorro.jpg" alt="PS" class="w-5 h-5 rounded-full object-contain">
         <span class="font-semibold text-slate-700 dark:text-slate-300">PS Funerarias Perpetuo Socorro</span> &copy; 2026 — ¡Protegemos Familias!
       </div>
       <div class="text-[11px] text-slate-400">
-        Diseño exclusivo para esquelas y recuerdos de novenario
+        Diseño exclusivo para esquelas y recuerdos solemnes de novenario
       </div>
     </div>
   </footer>
 
   <!-- ================= MODAL: AGREGAR NUEVO SANTO ================= -->
   <div id="modal-add-santo" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="glass-panel rounded-3xl max-w-md w-full p-7 shadow-2xl space-y-5 border border-gold-500/30">
+    <div class="glass-card rounded-3xl max-w-md w-full p-7 shadow-2xl space-y-5 border border-gold-500/30">
       <div class="flex items-center justify-between border-b border-slate-200 dark:border-bpurple-800/40 pb-3">
         <h3 class="font-cinzel text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
           <i data-lucide="sparkles" class="w-5 h-5 text-gold-400"></i> Nuevo Santo de Devoción
         </h3>
-        <button onclick="saintsManager.closeAddModal()" class="text-slate-400 hover:text-white">
+        <button onclick="saintsManager.closeAddModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white p-1 rounded-lg">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
@@ -577,28 +638,28 @@
           <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1" for="modal-santo-nombre">
             Nombre del Santo / Advocación <span class="text-gold-500">*</span>
           </label>
-          <input type="text" id="modal-santo-nombre" required placeholder="Ej: San Francisco de Asís" class="w-full px-4 py-2.5 rounded-2xl bg-white/70 dark:bg-bgreen-950/80 border border-slate-300 dark:border-bpurple-700/50 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-gold-500">
+          <input type="text" id="modal-santo-nombre" required placeholder="Ej: San Francisco de Asís" class="w-full px-4 py-2.5 rounded-2xl input-luxury text-sm focus:outline-none">
         </div>
 
         <div>
           <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1" for="modal-santo-titulo">
             Título o Lema Pío (Opcional)
           </label>
-          <input type="text" id="modal-santo-titulo" placeholder="Ej: Patrono de la paz y la creación" class="w-full px-4 py-2.5 rounded-2xl bg-white/70 dark:bg-bgreen-950/80 border border-slate-300 dark:border-bpurple-700/50 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-gold-500">
+          <input type="text" id="modal-santo-titulo" placeholder="Ej: Patrono de la paz y la creación" class="w-full px-4 py-2.5 rounded-2xl input-luxury text-sm focus:outline-none">
         </div>
 
         <div>
           <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
             Imagen / Estampa del Santo
           </label>
-          <input type="file" id="modal-santo-file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-bpurple-800/30 file:text-gold-300 hover:file:bg-bpurple-800/50">
+          <input type="file" id="modal-santo-file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-bpurple-800/30 file:text-bpurple-900 dark:file:text-gold-300 hover:file:bg-bpurple-800/50">
         </div>
 
         <div class="flex items-center justify-end gap-2 pt-3 border-t border-slate-200 dark:border-bpurple-800/40">
-          <button type="button" onclick="saintsManager.closeAddModal()" class="px-4 py-2.5 rounded-xl bg-slate-200 dark:bg-bgreen-950 text-slate-700 dark:text-slate-300 text-xs font-bold hover:bg-slate-300 dark:hover:bg-bgreen-900">
+          <button type="button" onclick="saintsManager.closeAddModal()" class="px-4 py-2.5 rounded-xl bg-slate-200 dark:bg-bgreen-950 text-slate-700 dark:text-slate-300 text-xs font-bold hover:bg-slate-300 dark:hover:bg-bgreen-900 border border-slate-300 dark:border-slate-800">
             Cancelar
           </button>
-          <button type="submit" class="px-6 py-2.5 rounded-xl gradient-gold-btn text-slate-950 font-black text-xs uppercase tracking-wider shadow-lg">
+          <button type="submit" class="px-6 py-2.5 rounded-xl btn-gold-luxury text-slate-950 font-black text-xs uppercase tracking-wider shadow-lg">
             Guardar Santo
           </button>
         </div>
@@ -607,14 +668,14 @@
   </div>
 
   <!-- Toast Notification -->
-  <div id="toast" class="hidden fixed bottom-6 right-6 z-50 px-5 py-3.5 rounded-2xl glass-panel text-slate-900 dark:text-white text-xs shadow-2xl flex items-center gap-2.5 border border-gold-500/50 transform transition-all">
-    <i data-lucide="check-circle" class="w-5 h-5 text-gold-400"></i>
+  <div id="toast" class="hidden fixed bottom-6 right-6 z-50 px-5 py-3.5 rounded-2xl glass-card text-slate-900 dark:text-white text-xs shadow-2xl flex items-center gap-2.5 border border-gold-500/50 transform transition-all">
+    <i data-lucide="check-circle" class="w-5 h-5 text-gold-500 dark:text-gold-400"></i>
     <span id="toast-message" class="font-semibold">Operación realizada con éxito</span>
   </div>
 
-  <!-- ================= SCRIPTS ================= -->
-  <script src="/static/js/saintsManager.js"></script>
-  <script src="/static/js/pdfGenerator.js"></script>
-  <script src="/static/js/app.js"></script>
+  <!-- ================= SCRIPTS CON CACHE BUSTING ================= -->
+  <script src="/static/js/saintsManager.js?v={{ v|default('2026') }}"></script>
+  <script src="/static/js/pdfGenerator.js?v={{ v|default('2026') }}"></script>
+  <script src="/static/js/app.js?v={{ v|default('2026') }}"></script>
 </body>
 </html>

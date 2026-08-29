@@ -170,9 +170,17 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # ================= RUTAS DE FRONTEND =================
+@app.after_request
+def add_header(response):
+    response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '-1'
+    return response
+
 @app.route('/')
 def index():
-    return render_template('index.html')
+    import time
+    return render_template('index.html', v=int(time.time()))
 
 # ================= RUTAS API SANTOS =================
 @app.route('/api/santos', methods=['GET'])

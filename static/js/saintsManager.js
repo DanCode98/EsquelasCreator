@@ -1,5 +1,5 @@
 /**
- * Módulo de Gestión de Santos de Devoción
+ * Módulo de Gestión de Santos de Devoción - EsquelasCreator
  */
 const saintsManager = {
   saints: [],
@@ -51,15 +51,15 @@ const saintsManager = {
       const isSelected = s.id === this.selectedSaintId;
       return `
         <div onclick="saintsManager.setSelectedSaint('${s.id}')" 
-             class="group cursor-pointer p-2 rounded-xl border transition-all flex flex-col items-center text-center ${
+             class="group cursor-pointer p-2.5 rounded-2xl border transition-all flex flex-col items-center text-center ${
                isSelected 
-                 ? 'bg-amber-500/15 border-amber-400 shadow-md shadow-amber-500/10' 
-                 : 'bg-slate-900 border-slate-800 hover:border-slate-600 hover:bg-slate-850'
+                 ? 'bg-gold-500/15 dark:bg-gold-500/20 border-gold-500 shadow-md shadow-gold-500/15 ring-2 ring-gold-500/30' 
+                 : 'bg-white/70 dark:bg-bgreen-950/70 border-slate-200 dark:border-bpurple-800/40 hover:border-gold-500/60 hover:bg-white dark:hover:bg-bgreen-900/60'
              }">
-          <div class="w-12 h-14 rounded-lg overflow-hidden bg-slate-950 mb-1.5 flex items-center justify-center p-0.5 border ${isSelected ? 'border-amber-400' : 'border-slate-800'}">
+          <div class="w-14 h-16 rounded-xl overflow-hidden bg-white shadow-inner mb-1.5 flex items-center justify-center p-1 border ${isSelected ? 'border-gold-400' : 'border-slate-200 dark:border-slate-800'}">
             <img src="${s.imagen_url}" alt="${s.nombre}" class="w-full h-full object-contain group-hover:scale-105 transition-transform" onerror="this.src='/static/img/defaults/cruz_dorada.svg'">
           </div>
-          <span class="text-[10px] font-semibold ${isSelected ? 'text-amber-300' : 'text-slate-300'} line-clamp-1 leading-tight">
+          <span class="text-[11px] font-semibold ${isSelected ? 'text-gold-600 dark:text-gold-300 font-bold' : 'text-slate-700 dark:text-slate-300'} line-clamp-1 leading-tight">
             ${s.nombre}
           </span>
         </div>
@@ -79,24 +79,24 @@ const saintsManager = {
     }
 
     container.innerHTML = this.saints.map(s => `
-      <div class="relative bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-col items-center text-center group hover:border-amber-500/40 transition-all shadow-lg">
-        <span class="absolute top-3 right-3 text-[9px] px-2 py-0.5 rounded-full ${s.es_predeterminado ? 'bg-slate-800 text-slate-400' : 'bg-amber-500/20 text-amber-300'}">
-          ${s.es_predeterminado ? 'Predeterminado' : 'Personalizado'}
+      <div class="relative glass-panel rounded-3xl p-4 flex flex-col items-center text-center group hover:scale-[1.02] border border-slate-200 dark:border-bpurple-800/40 transition-all shadow-lg">
+        <span class="absolute top-3 right-3 text-[9px] font-bold px-2.5 py-0.5 rounded-full ${s.es_predeterminado ? 'bg-slate-200 dark:bg-bpurple-950 text-slate-600 dark:text-slate-400 border border-slate-300 dark:border-bpurple-800/40' : 'bg-gold-500/20 text-gold-600 dark:text-gold-300 border border-gold-500/30'}">
+          ${s.es_predeterminado ? 'Oficial' : 'Personalizado'}
         </span>
 
-        <div class="w-20 h-24 rounded-xl overflow-hidden bg-slate-950 p-1 border border-slate-800 mb-3 flex items-center justify-center">
+        <div class="w-20 h-24 rounded-2xl overflow-hidden bg-white shadow-md p-1.5 border border-slate-200 dark:border-gold-500/30 mb-3 flex items-center justify-center">
           <img src="${s.imagen_url}" alt="${s.nombre}" class="w-full h-full object-contain group-hover:scale-105 transition-transform" onerror="this.src='/static/img/defaults/cruz_dorada.svg'">
         </div>
 
-        <h4 class="font-cinzel text-xs font-bold text-white mb-1 line-clamp-1">${s.nombre}</h4>
-        <p class="text-[10px] text-slate-400 mb-3 line-clamp-2 h-6">${s.titulo || 'Santo de Devoción'}</p>
+        <h4 class="font-cinzel text-xs font-bold text-slate-900 dark:text-white mb-1 line-clamp-1">${s.nombre}</h4>
+        <p class="text-[10px] text-slate-500 dark:text-slate-400 mb-3 line-clamp-2 h-6">${s.titulo || 'Santo de Devoción'}</p>
 
-        <div class="mt-auto w-full pt-2 border-t border-slate-800 flex items-center justify-between gap-2">
-          <button onclick="saintsManager.useInEditor('${s.id}')" class="flex-1 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-slate-950 text-[10px] font-semibold transition-all">
-            Usar
+        <div class="mt-auto w-full pt-3 border-t border-slate-200 dark:border-bpurple-800/30 flex items-center justify-between gap-2">
+          <button onclick="saintsManager.useInEditor('${s.id}')" class="flex-1 py-1.5 rounded-xl bg-gold-500/20 hover:bg-gold-500 text-gold-600 dark:text-gold-300 hover:text-slate-950 text-[10px] font-bold transition-all border border-gold-500/40">
+            Usar en Editor
           </button>
           ${!s.es_predeterminado ? `
-            <button onclick="saintsManager.deleteSanto('${s.id}')" class="p-1 rounded-lg bg-red-500/10 hover:bg-red-500 text-red-400 hover:text-white transition-all" title="Eliminar Santo">
+            <button onclick="saintsManager.deleteSanto('${s.id}')" class="p-1.5 rounded-xl bg-red-500/10 hover:bg-red-500 text-red-500 hover:text-white text-xs border border-red-500/20 transition-all" title="Eliminar Santo">
               <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
             </button>
           ` : ''}
@@ -118,6 +118,7 @@ const saintsManager = {
     const modal = document.getElementById('modal-add-santo');
     if (modal) modal.classList.remove('hidden');
     document.getElementById('modal-santo-nombre')?.focus();
+    if (window.lucide) lucide.createIcons();
   },
 
   closeAddModal() {

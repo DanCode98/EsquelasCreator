@@ -1,223 +1,294 @@
-/* Estilos Solemnes y Modernos para EsquelasCreator - Tema Funerarias Perpetuo Socorro */
+/* =========================================================================
+   SISTEMA DE DISEÑO HOMOLOGADO - ESTILO NICEPAGE (BIOGRAFÍA DEL ARTISTA #554831)
+   Tipografía: Playfair Display (Titulares Editoriales) + Open Sans & Plus Jakarta Sans (Cuerpo y UI)
+   Paleta: Blanco Galería, Grafito Obsidiana, Verde Ciprés (#1b2d2f), Morado Bizantino (#392f6e),
+           Acentos en Lavanda (#a18bbf) y Oro Imperial (#dfb12e / #facc15)
+   ========================================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Great+Vibes&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800;900&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --color-green-primary: #1b2d2f;
-  --color-green-dark: #0b1314;
-  --color-green-light: #395f63;
-  --color-purple-primary: #392f6e;
-  --color-purple-dark: #1f1940;
-  --color-purple-light: #6f5dcf;
-  --color-gold: #dfb12e;
-  --color-gold-light: #fef08a;
+  /* Marca Corporativa Principal */
+  --c-green-brand: #1b2d2f;
+  --c-green-dark: #0f1c1d;
+  --c-green-deep: #070e0f;
   
-  --bg-page-dark: #080d0e;
-  --bg-card-dark: rgba(18, 30, 32, 0.7);
-  --border-card-dark: rgba(57, 47, 110, 0.35);
+  --c-purple-brand: #392f6e;
+  --c-purple-dark: #211a47;
+  --c-purple-lavender: #a18bbf;
 
-  --bg-page-light: #f3f6f8;
-  --bg-card-light: rgba(255, 255, 255, 0.92);
-  --border-card-light: rgba(27, 45, 47, 0.15);
+  /* Oro y Champán Galería */
+  --c-gold-300: #fef08a;
+  --c-gold-400: #facc15;
+  --c-gold-500: #eab308;
+  --c-gold-600: #ca8a04;
+
+  --ease-smooth: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* ================= AMBIENT BACKGROUNDS ================= */
+/* =========================================================================
+   FONDOS MINIMALISTAS Y DE GALERÍA (MODO OSCURO Y MODO CLARO)
+   ========================================================================= */
 html.dark body {
-  background-color: #060a0b;
+  background-color: #0b0e12;
   background-image: 
-    radial-gradient(circle at 10% 20%, rgba(27, 45, 47, 0.7) 0%, transparent 45%),
-    radial-gradient(circle at 90% 10%, rgba(57, 47, 110, 0.6) 0%, transparent 50%),
-    radial-gradient(circle at 50% 90%, rgba(27, 45, 47, 0.5) 0%, transparent 60%);
+    radial-gradient(circle at 15% 15%, rgba(27, 45, 47, 0.45) 0%, transparent 50%),
+    radial-gradient(circle at 85% 10%, rgba(57, 47, 110, 0.4) 0%, transparent 55%),
+    linear-gradient(180deg, #090c10 0%, #10151c 50%, #090c10 100%);
   background-attachment: fixed;
   color: #f1f5f9;
+  font-family: 'Open Sans', 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: 0.1px;
 }
 
 html:not(.dark) body {
-  background-color: #f0f4f7;
+  background-color: #f8fafc;
   background-image: 
-    radial-gradient(circle at 10% 20%, rgba(200, 225, 228, 0.6) 0%, transparent 45%),
-    radial-gradient(circle at 90% 10%, rgba(220, 215, 245, 0.6) 0%, transparent 50%),
-    radial-gradient(circle at 50% 90%, rgba(210, 230, 233, 0.4) 0%, transparent 60%);
+    radial-gradient(circle at 10% 10%, rgba(220, 235, 237, 0.6) 0%, transparent 45%),
+    radial-gradient(circle at 90% 15%, rgba(235, 230, 252, 0.6) 0%, transparent 50%),
+    linear-gradient(180deg, #ffffff 0%, #f4f6f9 50%, #ffffff 100%);
   background-attachment: fixed;
-  color: #0f172a;
+  color: #111827;
+  font-family: 'Open Sans', 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: 0.1px;
 }
 
-/* ================= TIPOGRAFÍAS ================= */
-.font-cinzel { font-family: 'Cinzel', Georgia, serif; }
-.font-playfair { font-family: 'Playfair Display', Georgia, serif; }
-.font-script { font-family: 'Great Vibes', cursive; }
-.font-inter { font-family: 'Inter', sans-serif; }
+/* =========================================================================
+   TIPOGRAFÍAS EDITORIALES DE LA PLANTILLA
+   ========================================================================= */
+.font-playfair, .font-cinzel, .font-display, .font-serif { 
+  font-family: 'Playfair Display', Georgia, serif; 
+}
+.font-sans { 
+  font-family: 'Open Sans', 'Plus Jakarta Sans', sans-serif; 
+}
+.font-outfit { 
+  font-family: 'Outfit', sans-serif; 
+}
+.font-script { 
+  font-family: 'Pinyon Script', cursive; 
+}
 
-/* ================= EFECTOS DE CRISTAL (GLASSMORPHISM) ================= */
-.glass-panel {
+/* Letras de sección con espaciado amplio estilo galería */
+.tracking-editorial {
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* =========================================================================
+   PANELES Y TARJETAS EDITORIALES (ESTILO ART GALLERY)
+   ========================================================================= */
+.glass-card {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s var(--ease-smooth);
 }
 
-html.dark .glass-panel {
-  background: rgba(18, 30, 32, 0.75);
-  border: 1px solid rgba(82, 67, 156, 0.3);
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 20px rgba(57, 47, 110, 0.1);
+html.dark .glass-card {
+  background: rgba(16, 22, 28, 0.88);
+  border: 1px solid rgba(161, 139, 191, 0.22);
+  box-shadow: 
+    0 15px 35px -5px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-html:not(.dark) .glass-panel {
-  background: rgba(255, 255, 255, 0.88);
+html:not(.dark) .glass-card {
+  background: #ffffff;
   border: 1px solid rgba(27, 45, 47, 0.12);
-  box-shadow: 0 10px 30px -5px rgba(27, 45, 47, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 
+    0 15px 35px -5px rgba(0, 0, 0, 0.06),
+    0 2px 10px rgba(0, 0, 0, 0.03);
 }
 
-/* Efectos de Hover con Resplandor */
-.glass-panel-hover:hover {
-  transform: translateY(-2px);
-}
-html.dark .glass-panel-hover:hover {
-  border-color: rgba(223, 177, 46, 0.5);
-  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6), 0 0 25px rgba(223, 177, 46, 0.15);
-}
-html:not(.dark) .glass-panel-hover:hover {
-  border-color: rgba(57, 47, 110, 0.4);
-  box-shadow: 0 15px 35px -5px rgba(27, 45, 47, 0.15);
+.gallery-card-hover {
+  transition: transform 0.3s var(--ease-smooth), box-shadow 0.3s var(--ease-smooth), border-color 0.3s;
 }
 
-/* Gradientes Especiales */
-.gradient-brand {
-  background: linear-gradient(135deg, #1b2d2f 0%, #392f6e 100%);
+html.dark .gallery-card-hover:hover {
+  transform: translateY(-4px);
+  border-color: #facc15;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.85), 0 0 20px rgba(250, 204, 21, 0.15);
 }
 
-.gradient-brand-light {
-  background: linear-gradient(135deg, #2b474a 0%, #5648a1 100%);
+html:not(.dark) .gallery-card-hover:hover {
+  transform: translateY(-4px);
+  border-color: #392f6e;
+  box-shadow: 0 20px 40px -10px rgba(27, 45, 47, 0.12);
 }
 
-.gradient-gold-btn {
-  background: linear-gradient(135deg, #d97706 0%, #dfb12e 50%, #fef08a 100%);
-  color: #0b1314;
-  font-weight: 800;
-  box-shadow: 0 4px 15px rgba(223, 177, 46, 0.3);
-  transition: all 0.25s ease;
-}
-
-.gradient-gold-btn:hover {
-  background: linear-gradient(135deg, #f59e0b 0%, #fef08a 100%);
-  box-shadow: 0 6px 20px rgba(223, 177, 46, 0.45);
-  transform: translateY(-1.5px);
-}
-
-.gold-gradient-text {
-  background: linear-gradient(135deg, #fffbeb 0%, #fbbf24 40%, #d97706 100%);
+/* =========================================================================
+   TITULARES Y GRADIENTES DE ORO EDITORIAL
+   ========================================================================= */
+.gold-text-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #fef08a 25%, #facc15 50%, #eab308 80%, #ca8a04 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-html:not(.dark) .gold-gradient-text {
-  background: linear-gradient(135deg, #78350f 0%, #b45309 50%, #d97706 100%);
+html:not(.dark) .gold-text-gradient {
+  background: linear-gradient(135deg, #1b2d2f 0%, #392f6e 45%, #b45309 85%, #78350f 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* ================= ANIMACIONES ================= */
-@keyframes floatSlow {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
+/* =========================================================================
+   BOTONES ESTILO NICEPAGE ARTIST BIOGRAPHY
+   ========================================================================= */
+.btn-gold-luxury, .gradient-gold-btn {
+  background: linear-gradient(135deg, #fde047 0%, #facc15 35%, #eab308 70%, #ca8a04 100%) !important;
+  color: #030712 !important;
+  font-weight: 800 !important;
+  font-family: 'Open Sans', 'Outfit', sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  box-shadow: 
+    0 6px 20px rgba(234, 179, 8, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 0 0 1px rgba(254, 240, 138, 0.6) !important;
+  transition: all 0.25s var(--ease-smooth);
+  position: relative;
+  overflow: hidden;
+  border: none !important;
 }
 
-.animate-float {
-  animation: floatSlow 5s ease-in-out infinite;
-}
-
-@keyframes pulseGlow {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.02); }
-}
-
-.animate-pulse-glow {
-  animation: pulseGlow 3s ease-in-out infinite;
-}
-
-/* Shimmer animado para botones principales */
-@keyframes shimmerAnim {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.btn-shimmer {
-  background-size: 200% auto;
-  animation: shimmerAnim 4s linear infinite;
-}
-
-/* Scrollbars estilizadas */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-html.dark ::-webkit-scrollbar-track {
-  background: #0b1314;
-}
-html.dark ::-webkit-scrollbar-thumb {
-  background: #284346;
-  border-radius: 4px;
-}
-html.dark ::-webkit-scrollbar-thumb:hover {
-  background: #dfb12e;
-}
-
-html:not(.dark) ::-webkit-scrollbar-track {
-  background: #e2e8f0;
-}
-html:not(.dark) ::-webkit-scrollbar-thumb {
-  background: #94a3b8;
-  border-radius: 4px;
-}
-html:not(.dark) ::-webkit-scrollbar-thumb:hover {
-  background: #392f6e;
-}
-
-/* ================= GUÍAS DE CORTE ================= */
-.cut-mark-horizontal {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 1px;
-  border-top: 1px dashed #94a3b8;
-  pointer-events: none;
-  z-index: 20;
-}
-
-.cut-mark-vertical {
+.btn-gold-luxury::after, .gradient-gold-btn::after {
+  content: '';
   position: absolute;
   top: 0;
-  bottom: 0;
-  width: 1px;
-  border-left: 1px dashed #94a3b8;
-  pointer-events: none;
-  z-index: 20;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+  transform: skewX(-25deg);
+  transition: 0.7s ease;
 }
 
-.cut-indicator {
-  position: absolute;
-  font-size: 10px;
-  color: #64748b;
+.btn-gold-luxury:hover::after, .gradient-gold-btn:hover::after {
+  left: 160%;
+}
+
+.btn-gold-luxury:hover, .gradient-gold-btn:hover {
+  background: linear-gradient(135deg, #fef08a 0%, #fde047 40%, #eab308 80%, #a16207 100%) !important;
+  box-shadow: 
+    0 10px 25px rgba(234, 179, 8, 0.65),
+    0 0 20px rgba(250, 204, 21, 0.6) !important;
+  transform: translateY(-2px);
+  color: #000000 !important;
+}
+
+.btn-editorial-outline {
+  border: 1.5px solid rgba(161, 139, 191, 0.4);
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  transition: all 0.25s var(--ease-smooth);
+}
+
+html.dark .btn-editorial-outline:hover {
+  background: rgba(250, 204, 21, 0.15);
+  border-color: #facc15;
+  color: #facc15;
+}
+
+html:not(.dark) .btn-editorial-outline:hover {
+  background: rgba(57, 47, 110, 0.08);
+  border-color: #392f6e;
+  color: #392f6e;
+}
+
+/* =========================================================================
+   ALTERNADOR DE TEMA (THEME SWITCH PILL)
+   ========================================================================= */
+.theme-switch-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-smooth);
+}
+
+html.dark .theme-switch-pill {
+  background: #131920;
+  border: 1px solid rgba(250, 204, 21, 0.4);
+  box-shadow: 0 0 12px rgba(250, 204, 21, 0.15);
+}
+
+html:not(.dark) .theme-switch-pill {
+  background: #ffffff;
+  border: 1px solid rgba(57, 47, 110, 0.3);
+  box-shadow: 0 2px 8px rgba(57, 47, 110, 0.1);
+}
+
+.theme-switch-option {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: all 0.25s var(--ease-smooth);
 }
 
-/* ================= HOJAS DE IMPRESIÓN ================= */
-.sheet-letter {
-  width: 216mm;
-  min-height: 279mm;
-  max-width: 100%;
-  aspect-ratio: 8.5 / 11;
-  background: white;
-  color: #1e293b;
-  margin: 0 auto;
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
-  position: relative;
-  box-sizing: border-box;
+html.dark .theme-switch-dark-active {
+  background: linear-gradient(135deg, #1b2d2f, #392f6e);
+  color: #fef08a;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
+html.dark .theme-switch-light-inactive {
+  color: #94a3b8;
+}
+
+html:not(.dark) .theme-switch-light-active {
+  background: linear-gradient(135deg, #eab308, #facc15);
+  color: #030712;
+  box-shadow: 0 2px 6px rgba(234, 179, 8, 0.3);
+}
+
+html:not(.dark) .theme-switch-dark-inactive {
+  color: #64748b;
+}
+
+/* =========================================================================
+   FORMULARIOS E INPUTS MODERNOS
+   ========================================================================= */
+.input-luxury {
+  transition: all 0.25s var(--ease-smooth);
+  font-family: 'Open Sans', 'Plus Jakarta Sans', sans-serif;
+}
+
+html.dark .input-luxury {
+  background: #11171e;
+  border: 1px solid rgba(161, 139, 191, 0.35);
+  color: #ffffff;
+}
+html.dark .input-luxury:focus {
+  background: #151d27;
+  border-color: #facc15;
+  box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.25);
+}
+
+html:not(.dark) .input-luxury {
+  background: #ffffff;
+  border: 1.5px solid rgba(27, 45, 47, 0.18);
+  color: #0f172a;
+}
+html:not(.dark) .input-luxury:focus {
+  background: #ffffff;
+  border-color: #392f6e;
+  box-shadow: 0 0 0 3px rgba(57, 47, 110, 0.15);
+}
+
+/* =========================================================================
+   PLIEGO DE IMPRESIÓN HORIZONTAL
+   ========================================================================= */
 .sheet-letter-landscape {
   width: 279.4mm;
   min-height: 215.9mm;
@@ -226,7 +297,7 @@ html:not(.dark) ::-webkit-scrollbar-thumb:hover {
   background: white;
   color: #1e293b;
   margin: 0 auto;
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.5);
   position: relative;
   box-sizing: border-box;
 }
@@ -242,7 +313,7 @@ html:not(.dark) ::-webkit-scrollbar-thumb:hover {
   .no-print {
     display: none !important;
   }
-  .sheet-letter, .sheet-letter-landscape {
+  .sheet-letter-landscape {
     box-shadow: none !important;
     margin: 0 !important;
     width: 100% !important;
