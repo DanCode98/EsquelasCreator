@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <defs>
+    <radialGradient id="joseHalo" cx="50%" cy="30%" r="45%">
+      <stop offset="0%" stop-color="#fffbeb"/>
+      <stop offset="60%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#b45309" stop-opacity="0.1"/>
+    </radialGradient>
+    <linearGradient id="mantoOcre" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="50%" stop-color="#b45309"/>
+      <stop offset="100%" stop-color="#78350f"/>
+    </linearGradient>
+    <linearGradient id="tunicaMorada" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="50%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Halo de San José -->
+  <circle cx="180" cy="125" r="85" fill="url(#joseHalo)"/>
+  <circle cx="180" cy="125" r="70" fill="none" stroke="#d97706" stroke-width="2"/>
+
+  <!-- Túnica y Manto -->
+  <path d="M 180,160 L 120,240 L 100,460 L 280,460 L 260,240 Z" fill="url(#tunicaMorada)"/>
+  <path d="M 120,240 C 110,320 120,420 140,460 L 100,460 C 90,380 100,280 120,240 Z" fill="url(#mantoOcre)"/>
+  <path d="M 230,210 C 270,300 270,400 250,460 L 280,460 C 300,380 280,260 250,210 Z" fill="url(#mantoOcre)"/>
+
+  <!-- Rostro de San José -->
+  <circle cx="180" cy="125" r="28" fill="#fed7aa"/>
+  <path d="M 160,130 C 160,170 200,170 200,130 Z" fill="#451a03"/> <!-- Barba castaña/canosa -->
+  <ellipse cx="180" cy="120" rx="22" ry="16" fill="#fed7aa"/>
+
+  <!-- Vara florecida de lirios/azucenas en mano derecha -->
+  <g transform="translate(100, 200)">
+    <line x1="10" y1="-80" x2="20" y2="260" stroke="#78350f" stroke-width="6" stroke-linecap="round"/>
+    <!-- Flores de lirio blancas florecidas en la punta -->
+    <circle cx="10" cy="-80" r="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <circle cx="2" cy="-90" r="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <circle cx="18" cy="-90" r="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <circle cx="10" cy="-80" r="4" fill="#fbbf24"/>
+  </g>
+
+  <!-- Niño Jesús en brazos de San José -->
+  <g transform="translate(200, 210) scale(0.65)">
+    <!-- Halo del Niño -->
+    <circle cx="60" cy="50" r="35" fill="url(#joseHalo)"/>
+    <circle cx="60" cy="50" r="20" fill="#fed7aa"/>
+    <path d="M 60,70 L 30,150 L 90,150 Z" fill="#ffffff" stroke="#cbd5e1"/>
+    <!-- Cabello rizado dorado del Niño -->
+    <path d="M 45,45 C 50,30 70,30 75,45 Z" fill="#d97706"/>
+    <!-- Manita del Niño tocando a San José -->
+    <circle cx="25" cy="80" r="8" fill="#fed7aa"/>
+  </g>
+</svg>

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <defs>
+    <radialGradient id="miguelHalo" cx="50%" cy="30%" r="45%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#fef08a"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.1"/>
+    </radialGradient>
+    <linearGradient id="corazaOro" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="40%" stop-color="#eab308"/>
+      <stop offset="100%" stop-color="#854d0e"/>
+    </linearGradient>
+    <linearGradient id="mantoCarmesí" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="60%" stop-color="#be123c"/>
+      <stop offset="100%" stop-color="#881337"/>
+    </linearGradient>
+    <linearGradient id="alasGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Halo celestial -->
+  <circle cx="200" cy="120" r="85" fill="url(#miguelHalo)"/>
+
+  <!-- Grandes Alas de Arcángel -->
+  <g fill="url(#alasGrad)" stroke="#cbd5e1" stroke-width="1.5">
+    <path d="M 170,180 C 110,60 40,80 30,140 C 20,200 80,260 140,300 Z"/>
+    <path d="M 230,180 C 290,60 360,80 370,140 C 380,200 320,260 260,300 Z"/>
+  </g>
+
+  <!-- Manto rojo triunfal al viento -->
+  <path d="M 160,170 C 120,220 110,360 130,460 L 270,460 C 290,360 280,220 240,170 Z" fill="url(#mantoCarmesí)"/>
+
+  <!-- Armadura y Coraza Romana Dorada -->
+  <path d="M 170,170 L 230,170 L 240,310 L 160,310 Z" fill="url(#corazaOro)" stroke="#713f12" stroke-width="2"/>
+  <!-- Faldellín de tiras de cuero / armadura -->
+  <g fill="#713f12">
+    <rect x="165" y="310" width="12" height="45" rx="3"/>
+    <rect x="182" y="310" width="12" height="45" rx="3"/>
+    <rect x="200" y="310" width="12" height="45" rx="3"/>
+    <rect x="218" y="310" width="12" height="45" rx="3"/>
+  </g>
+
+  <!-- Rostro Juvenil y Valiente -->
+  <circle cx="200" cy="125" r="26" fill="#fed7aa"/>
+  <path d="M 175,120 C 180,95 220,95 225,120 C 225,100 175,100 175,120 Z" fill="#92400e"/> <!-- Cabello rizado -->
+
+  <!-- Espada de fuego alzada en mano derecha -->
+  <g transform="translate(130, 80) rotate(-25)">
+    <!-- Hoja brillante -->
+    <polygon points="0,-70 6,40 -6,40" fill="#fef08a" stroke="#f59e0b" stroke-width="1.5" filter="drop-shadow(0 0 6px #f59e0b)"/>
+    <rect x="-16" y="40" width="32" height="6" fill="url(#corazaOro)"/>
+    <rect x="-3" y="46" width="6" height="20" fill="#78350f"/>
+    <circle cx="0" cy="68" r="5" fill="url(#corazaOro)"/>
+  </g>
+
+  <!-- Balanza de las almas en mano izquierda -->
+  <g transform="translate(270, 220)">
+    <line x1="0" y1="0" x2="0" y2="40" stroke="#ca8a04" stroke-width="2"/>
+    <line x1="-25" y1="40" x2="25" y2="40" stroke="#ca8a04" stroke-width="2.5"/>
+    <!-- Platillo izquierdo -->
+    <path d="M -35,70 C -35,80 -15,80 -15,70 Z" fill="#eab308"/>
+    <line x1="-25" y1="40" x2="-35" y2="70" stroke="#ca8a04" stroke-width="1"/>
+    <line x1="-25" y1="40" x2="-15" y2="70" stroke="#ca8a04" stroke-width="1"/>
+    <!-- Platillo derecho -->
+    <path d="M 15,70 C 15,80 35,80 35,70 Z" fill="#eab308"/>
+    <line x1="25" y1="40" x2="15" y2="70" stroke="#ca8a04" stroke-width="1"/>
+    <line x1="25" y1="40" x2="35" y2="70" stroke="#ca8a04" stroke-width="1"/>
+  </g>
+</svg>

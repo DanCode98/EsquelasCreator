@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <defs>
+    <radialGradient id="carmenHalo" cx="50%" cy="30%" r="45%">
+      <stop offset="0%" stop-color="#fffbeb"/>
+      <stop offset="60%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#b45309" stop-opacity="0.1"/>
+    </radialGradient>
+    <linearGradient id="habitoMarron" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#78350f"/>
+      <stop offset="50%" stop-color="#542407"/>
+      <stop offset="100%" stop-color="#451a03"/>
+    </linearGradient>
+    <linearGradient id="capaBlanca" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#cbd5e1"/>
+    </linearGradient>
+    <linearGradient id="oroCorona" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="50%" stop-color="#eab308"/>
+      <stop offset="100%" stop-color="#a16207"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Halo de la Virgen -->
+  <circle cx="200" cy="130" r="90" fill="url(#carmenHalo)"/>
+  
+  <!-- Corona Real -->
+  <path d="M 175,90 L 180,70 L 190,80 L 200,65 L 210,80 L 220,70 L 225,90 Z" fill="url(#oroCorona)" stroke="#78350f" stroke-width="1.5"/>
+  <circle cx="200" cy="62" r="3" fill="#fef08a"/>
+
+  <!-- Velo y Hábito Carmelita -->
+  <path d="M 200,105 C 160,120 140,180 135,280 L 120,460 L 280,460 L 265,280 C 260,180 240,120 200,105 Z" fill="url(#habitoMarron)"/>
+  <!-- Capa blanca carmelitana -->
+  <path d="M 160,165 C 130,220 130,340 140,460 L 175,460 C 165,340 165,220 175,165 Z" fill="url(#capaBlanca)"/>
+  <path d="M 240,165 C 270,220 270,340 260,460 L 225,460 C 235,340 235,220 225,165 Z" fill="url(#capaBlanca)"/>
+
+  <!-- Rostro -->
+  <ellipse cx="200" cy="135" rx="20" ry="24" fill="#fed7aa"/>
+
+  <!-- Niño Jesús en brazos -->
+  <g transform="translate(130, 210) scale(0.6)">
+    <circle cx="60" cy="50" r="40" fill="url(#carmenHalo)"/>
+    <circle cx="60" cy="50" r="20" fill="#fed7aa"/>
+    <path d="M 60,70 L 30,140 L 90,140 Z" fill="#ffffff" stroke="#cbd5e1"/>
+    <!-- Escapulario en mano del Niño -->
+    <rect x="15" y="110" width="14" height="18" fill="#542407" stroke="#fbbf24" stroke-width="1"/>
+  </g>
+
+  <!-- Gran Escapulario del Carmen que sostiene la Virgen -->
+  <g transform="translate(230, 240)">
+    <line x1="10" y1="0" x2="10" y2="40" stroke="#fbbf24" stroke-width="2"/>
+    <rect x="0" y="40" width="22" height="28" rx="2" fill="#542407" stroke="#fbbf24" stroke-width="1.5" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.4))"/>
+    <!-- Cruz / Escudo del Carmen bordado -->
+    <line x1="11" y1="46" x2="11" y2="62" stroke="#fef08a" stroke-width="2"/>
+    <line x1="5" y1="52" x2="17" y2="52" stroke="#fef08a" stroke-width="2"/>
+  </g>
+</svg>

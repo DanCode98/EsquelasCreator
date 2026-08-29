@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <defs>
+    <radialGradient id="ninoHalo" cx="50%" cy="30%" r="45%">
+      <stop offset="0%" stop-color="#fffbeb"/>
+      <stop offset="60%" stop-color="#fef08a"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.15"/>
+    </radialGradient>
+    <linearGradient id="tunicaRosaNino" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="60%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#9f1239"/>
+    </linearGradient>
+    <linearGradient id="cinturonAzul" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Halo de Luz -->
+  <circle cx="200" cy="120" r="90" fill="url(#ninoHalo)"/>
+  <circle cx="200" cy="120" r="75" fill="none" stroke="#eab308" stroke-width="2"/>
+
+  <!-- Túnica Rosada del Divino Niño -->
+  <path d="M 200,160 L 140,240 L 120,440 L 280,440 L 260,240 Z" fill="url(#tunicaRosaNino)" stroke="#881337" stroke-width="2"/>
+  
+  <!-- Cuello de encaje blanco -->
+  <path d="M 180,160 C 190,175 210,175 220,160 C 230,170 170,170 180,160 Z" fill="#ffffff"/>
+
+  <!-- Cinturón Azul Cielo -->
+  <rect x="150" y="270" width="100" height="18" rx="4" fill="url(#cinturonAzul)"/>
+  <path d="M 205,288 L 205,370 L 220,370 L 220,288 Z" fill="url(#cinturonAzul)"/>
+
+  <!-- Rostro infantil dulce -->
+  <circle cx="200" cy="120" r="30" fill="#fed7aa"/>
+  <path d="M 175,110 C 180,85 220,85 225,110 C 220,95 180,95 175,110 Z" fill="#78350f"/> <!-- Cabello castaño claro rizado -->
+  <!-- Ojos y sonrisa dulce -->
+  <circle cx="190" cy="120" r="3" fill="#451a03"/>
+  <circle cx="210" cy="120" r="3" fill="#451a03"/>
+  <path d="M 194,133 Q 200,140 206,133" stroke="#e11d48" stroke-width="2" fill="none"/>
+
+  <!-- Brazos abiertos de bendición y acogida -->
+  <path d="M 160,190 Q 110,180 80,160" stroke="#fb7185" stroke-width="22" stroke-linecap="round" fill="none"/>
+  <circle cx="75" cy="155" r="14" fill="#fed7aa"/> <!-- Manita abierta izquierda -->
+
+  <path d="M 240,190 Q 290,180 320,160" stroke="#fb7185" stroke-width="22" stroke-linecap="round" fill="none"/>
+  <circle cx="325" cy="155" r="14" fill="#fed7aa"/> <!-- Manita abierta derecha -->
+
+  <!-- Nubes a los pies -->
+  <path d="M 100,450 C 120,430 160,430 180,450 C 200,430 240,430 260,450 C 280,430 310,440 310,460 L 90,460 Z" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+</svg>

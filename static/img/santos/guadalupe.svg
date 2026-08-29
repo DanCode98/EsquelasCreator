@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <defs>
+    <radialGradient id="guadalupeAura" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#fffbeb"/>
+      <stop offset="40%" stop-color="#fef08a"/>
+      <stop offset="70%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309" stop-opacity="0.2"/>
+    </radialGradient>
+    <linearGradient id="mantoAzul" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="50%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#075985"/>
+    </linearGradient>
+    <linearGradient id="tunicaRosa" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fda4af"/>
+      <stop offset="50%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#be123c"/>
+    </linearGradient>
+    <linearGradient id="goldG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="50%" stop-color="#eab308"/>
+      <stop offset="100%" stop-color="#a16207"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Resplandor Rayos de Sol Mandorla -->
+  <ellipse cx="200" cy="240" rx="140" ry="210" fill="url(#guadalupeAura)"/>
+  
+  <!-- Rayos dorados puntiagudos -->
+  <g stroke="#d97706" stroke-width="2">
+    <!-- Rayos alrededor de la silueta -->
+    <path d="M 200,30 L 200,10 M 230,35 L 245,15 M 260,50 L 285,30 M 290,80 L 320,65 M 310,120 L 345,110 M 325,160 L 365,155 M 330,210 L 370,210 M 325,260 L 365,265 M 310,310 L 345,320 M 290,360 L 320,375 M 260,400 L 285,420 M 230,430 L 245,450
+             M 170,35 L 155,15 M 140,50 L 115,30 M 110,80 L 80,65 M 90,120 L 55,110 M 75,160 L 35,155 M 70,210 L 30,210 M 75,260 L 35,265 M 90,310 L 55,320 M 110,360 L 80,375 M 140,400 L 115,420 M 170,430 L 155,450"/>
+  </g>
+
+  <!-- Manto con estrellas -->
+  <path d="M 200,90 C 160,110 130,170 120,280 C 115,340 135,420 150,440 L 250,440 C 265,420 285,340 280,280 C 270,170 240,110 200,90 Z" fill="url(#mantoAzul)" stroke="url(#goldG)" stroke-width="4"/>
+
+  <!-- Túnica interior rosa -->
+  <path d="M 200,130 C 180,160 170,250 160,430 L 240,430 C 230,250 220,160 200,130 Z" fill="url(#tunicaRosa)"/>
+
+  <!-- Cinto negro de gravidez -->
+  <path d="M 182,230 L 218,230 L 222,236 L 178,236 Z" fill="#0f172a"/>
+  <circle cx="190" cy="245" r="3" fill="#0f172a"/>
+
+  <!-- Rostro inclinado -->
+  <ellipse cx="200" cy="140" rx="18" ry="22" fill="#fde047" stroke="#b45309" stroke-width="1"/>
+  <!-- Manos juntas en oración -->
+  <path d="M 195,200 C 190,185 200,175 200,175 C 200,175 210,185 205,200 Z" fill="#fde047" stroke="#b45309" stroke-width="1"/>
+
+  <!-- Estrellas doradas en el manto -->
+  <g fill="#fef08a" stroke="#ca8a04" stroke-width="0.5">
+    <polygon points="150,160 152,166 158,166 153,170 155,176 150,172 145,176 147,170 142,166 148,166" transform="scale(0.8) translate(30, 20)"/>
+    <polygon points="150,160 152,166 158,166 153,170 155,176 150,172 145,176 147,170 142,166 148,166" transform="scale(0.8) translate(170, 40)"/>
+    <polygon points="150,160 152,166 158,166 153,170 155,176 150,172 145,176 147,170 142,166 148,166" transform="scale(0.8) translate(20, 160)"/>
+    <polygon points="150,160 152,166 158,166 153,170 155,176 150,172 145,176 147,170 142,166 148,166" transform="scale(0.8) translate(180, 180)"/>
+    <polygon points="150,160 152,166 158,166 153,170 155,176 150,172 145,176 147,170 142,166 148,166" transform="scale(0.8) translate(15, 290)"/>
+    <polygon points="150,160 152,166 158,166 153,170 155,176 150,172 145,176 147,170 142,166 148,166" transform="scale(0.8) translate(185, 300)"/>
+  </g>
+
+  <!-- Luna creciente a los pies -->
+  <path d="M 140,435 C 170,470 230,470 260,435 C 240,455 160,455 140,435 Z" fill="#0f172a"/>
+
+  <!-- Ángel a los pies -->
+  <g>
+    <!-- Alas tricolor del ángel -->
+    <path d="M 130,475 C 160,455 180,455 200,470 C 180,480 150,490 130,475 Z" fill="#0284c7"/>
+    <path d="M 270,475 C 240,455 220,455 200,470 C 220,480 250,490 270,475 Z" fill="#be123c"/>
+    <!-- Rostro del ángel -->
+    <circle cx="200" cy="468" r="14" fill="#fde047"/>
+  </g>
+</svg>

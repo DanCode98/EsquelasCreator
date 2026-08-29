@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200" height="120">
+  <!-- Corona y Monograma Funerario estilo profesional -->
+  <g fill="none" stroke="#15803d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Corona Superior -->
+    <path d="M 70,35 L 75,18 L 88,28 L 100,12 L 112,28 L 125,18 L 130,35 Z" fill="#15803d" fill-opacity="0.1" />
+    <circle cx="75" cy="15" r="2.5" fill="#15803d" />
+    <circle cx="100" cy="9" r="2.5" fill="#15803d" />
+    <circle cx="125" cy="15" r="2.5" fill="#15803d" />
+    
+    <!-- Óvalo del Monograma -->
+    <ellipse cx="100" cy="55" rx="36" ry="24" stroke="#15803d" stroke-width="2.5" />
+    
+    <!-- Monograma PS / Cruz -->
+    <text x="100" y="62" font-family="'Cinzel', Georgia, serif" font-size="20" font-weight="bold" fill="#15803d" text-anchor="middle" stroke="none">PS</text>
+  </g>
+  <text x="100" y="90" font-family="'Inter', sans-serif" font-size="9" font-weight="bold" fill="#15803d" text-anchor="middle" letter-spacing="2">FUNERARIAS</text>
+  <g fill="#15803d" transform="translate(68, 96) scale(0.6)">
+    <polygon points="10,0 13,7 20,8 15,13 16,20 10,16 4,20 5,13 0,8 7,7"/>
+    <polygon points="30,0 33,7 40,8 35,13 36,20 30,16 24,20 25,13 20,8 27,7"/>
+    <polygon points="50,0 53,7 60,8 55,13 56,20 50,16 44,20 45,13 40,8 47,7"/>
+    <polygon points="70,0 73,7 80,8 75,13 76,20 70,16 64,20 65,13 60,8 67,7"/>
+    <polygon points="90,0 93,7 100,8 95,13 96,20 90,16 84,20 85,13 80,8 87,7"/>
+  </g>
+</svg>

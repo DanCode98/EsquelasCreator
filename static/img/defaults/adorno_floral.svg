@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80" width="300" height="80">
+  <!-- Viñeta ornamental floral victoriana para contraportada -->
+  <g fill="#1e293b" stroke="#1e293b" stroke-width="0.5">
+    <path d="M 150,40 C 130,20 90,15 60,35 C 40,48 30,70 10,70 C 5,70 0,65 5,60 C 20,40 50,25 80,25 C 110,25 135,35 150,40 Z" />
+    <path d="M 150,40 C 170,20 210,15 240,35 C 260,48 270,70 290,70 C 295,70 300,65 295,60 C 280,40 250,25 220,25 C 190,25 165,35 150,40 Z" />
+    
+    <!-- Espirales y rizos decorativos -->
+    <path d="M 80,45 C 60,55 45,50 40,40 C 35,30 45,20 55,25 C 65,30 60,45 50,45" fill="none" stroke="#1e293b" stroke-width="2.5" />
+    <path d="M 220,45 C 240,55 255,50 260,40 C 265,30 255,20 245,25 C 235,30 240,45 250,45" fill="none" stroke="#1e293b" stroke-width="2.5" />
+    
+    <!-- Centro con puntos ornamentales -->
+    <circle cx="150" cy="40" r="4" fill="#1e293b" />
+    <circle cx="140" cy="35" r="2.5" fill="#1e293b" />
+    <circle cx="160" cy="35" r="2.5" fill="#1e293b" />
+    <circle cx="132" cy="32" r="1.8" fill="#1e293b" />
+    <circle cx="168" cy="32" r="1.8" fill="#1e293b" />
+  </g>
+</svg>

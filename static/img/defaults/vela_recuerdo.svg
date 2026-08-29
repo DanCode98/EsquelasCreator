@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <radialGradient id="flameGlow" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
+      <stop offset="25%" stop-color="#fef08a" stop-opacity="0.8"/>
+      <stop offset="60%" stop-color="#f59e0b" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#b45309" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="candleBody" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e2e8f0"/>
+      <stop offset="50%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#cbd5e1"/>
+    </linearGradient>
+    <linearGradient id="candleGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="50%" stop-color="#dfb12e"/>
+      <stop offset="100%" stop-color="#9b6e1b"/>
+    </linearGradient>
+  </defs>
+  <!-- Resplandor exterior -->
+  <circle cx="200" cy="140" r="140" fill="url(#flameGlow)"/>
+  
+  <!-- Soporte / Candelabro Solemne -->
+  <path d="M 120,330 C 140,310 260,310 280,330 L 290,345 C 290,355 110,355 110,345 Z" fill="url(#candleGold)" stroke="#7e561c" stroke-width="1.5"/>
+  <ellipse cx="200" cy="315" rx="55" ry="12" fill="url(#candleGold)" stroke="#7e561c" stroke-width="1.5"/>
+  
+  <!-- Vela -->
+  <rect x="165" y="170" width="70" height="145" rx="5" fill="url(#candleBody)" stroke="#94a3b8" stroke-width="1.5"/>
+  <!-- Cera superior derretida sutil -->
+  <ellipse cx="200" cy="170" rx="35" ry="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+  <path d="M 175,170 Q 180,195 185,170" fill="#ffffff"/>
+  <path d="M 215,170 Q 222,205 228,170" fill="#ffffff"/>
+  
+  <!-- Mecha -->
+  <line x1="200" y1="170" x2="200" y2="148" stroke="#334155" stroke-width="2.5" stroke-linecap="round"/>
+  
+  <!-- Llama de la vela -->
+  <path d="M 200,90 C 180,120 185,150 200,150 C 215,150 220,120 200,90 Z" fill="#f59e0b" filter="drop-shadow(0 0 8px #fef08a)"/>
+  <path d="M 200,105 C 190,125 192,145 200,145 C 208,145 210,125 200,105 Z" fill="#ffffff"/>
+</svg>

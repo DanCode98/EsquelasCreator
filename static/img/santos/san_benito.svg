@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <defs>
+    <radialGradient id="benitoHalo" cx="50%" cy="30%" r="45%">
+      <stop offset="0%" stop-color="#fffbeb"/>
+      <stop offset="60%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#b45309" stop-opacity="0.1"/>
+    </radialGradient>
+    <linearGradient id="habitoNegro" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="50%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="medallaOro" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="50%" stop-color="#eab308"/>
+      <stop offset="100%" stop-color="#a16207"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Halo -->
+  <circle cx="200" cy="130" r="90" fill="url(#benitoHalo)"/>
+  <circle cx="200" cy="130" r="75" fill="none" stroke="#d97706" stroke-width="2"/>
+
+  <!-- Hábito Benedictino Negro con Capucha -->
+  <path d="M 200,90 C 155,105 130,170 120,280 L 110,460 L 290,460 L 280,280 C 270,170 245,105 200,90 Z" fill="url(#habitoNegro)" stroke="#020617" stroke-width="2"/>
+
+  <!-- Rostro anciano venerable y barba blanca -->
+  <circle cx="200" cy="130" r="28" fill="#fed7aa"/>
+  <path d="M 180,135 C 180,180 220,180 220,135 Z" fill="#f1f5f9"/> <!-- Barba blanca -->
+  <ellipse cx="200" cy="125" rx="22" ry="16" fill="#fed7aa"/>
+
+  <!-- Cruz de San Benito en mano derecha -->
+  <g transform="translate(140, 240)">
+    <line x1="0" y1="-40" x2="0" y2="120" stroke="#78350f" stroke-width="6"/>
+    <!-- Cruz de mano dorada -->
+    <rect x="-4" y="-30" width="8" height="60" fill="url(#medallaOro)"/>
+    <rect x="-20" y="-15" width="40" height="8" fill="url(#medallaOro)"/>
+  </g>
+
+  <!-- Libro de la Santa Regla (ora et labora) en mano izquierda -->
+  <g transform="translate(230, 260)">
+    <rect x="0" y="0" width="45" height="60" rx="3" fill="#991b1b" stroke="url(#medallaOro)" stroke-width="2" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.4))"/>
+    <line x1="12" y1="0" x2="12" y2="60" stroke="#7f1d1d" stroke-width="3"/>
+    <!-- Cruz grabada en la portada -->
+    <line x1="28" y1="15" x2="28" y2="45" stroke="#fef08a" stroke-width="2"/>
+    <line x1="20" y1="25" x2="36" y2="25" stroke="#fef08a" stroke-width="2"/>
+  </g>
+
+  <!-- Medalla de San Benito en el centro inferior -->
+  <g transform="translate(200, 400)">
+    <circle cx="0" cy="0" r="28" fill="url(#medallaOro)" stroke="#78350f" stroke-width="2"/>
+    <circle cx="0" cy="0" r="23" fill="none" stroke="#78350f" stroke-width="1"/>
+    <!-- Cruz de la medalla con iniciales CSSML / NDSMD -->
+    <line x1="0" y1="-18" x2="0" y2="18" stroke="#78350f" stroke-width="4"/>
+    <line x1="-18" y1="0" x2="18" y2="0" stroke="#78350f" stroke-width="4"/>
+  </g>
+</svg>

@@ -1,0 +1,252 @@
+/* Estilos Solemnes y Modernos para EsquelasCreator - Tema Funerarias Perpetuo Socorro */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Great+Vibes&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+
+:root {
+  --color-green-primary: #1b2d2f;
+  --color-green-dark: #0b1314;
+  --color-green-light: #395f63;
+  --color-purple-primary: #392f6e;
+  --color-purple-dark: #1f1940;
+  --color-purple-light: #6f5dcf;
+  --color-gold: #dfb12e;
+  --color-gold-light: #fef08a;
+  
+  --bg-page-dark: #080d0e;
+  --bg-card-dark: rgba(18, 30, 32, 0.7);
+  --border-card-dark: rgba(57, 47, 110, 0.35);
+
+  --bg-page-light: #f3f6f8;
+  --bg-card-light: rgba(255, 255, 255, 0.92);
+  --border-card-light: rgba(27, 45, 47, 0.15);
+}
+
+/* ================= AMBIENT BACKGROUNDS ================= */
+html.dark body {
+  background-color: #060a0b;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(27, 45, 47, 0.7) 0%, transparent 45%),
+    radial-gradient(circle at 90% 10%, rgba(57, 47, 110, 0.6) 0%, transparent 50%),
+    radial-gradient(circle at 50% 90%, rgba(27, 45, 47, 0.5) 0%, transparent 60%);
+  background-attachment: fixed;
+  color: #f1f5f9;
+}
+
+html:not(.dark) body {
+  background-color: #f0f4f7;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(200, 225, 228, 0.6) 0%, transparent 45%),
+    radial-gradient(circle at 90% 10%, rgba(220, 215, 245, 0.6) 0%, transparent 50%),
+    radial-gradient(circle at 50% 90%, rgba(210, 230, 233, 0.4) 0%, transparent 60%);
+  background-attachment: fixed;
+  color: #0f172a;
+}
+
+/* ================= TIPOGRAFÍAS ================= */
+.font-cinzel { font-family: 'Cinzel', Georgia, serif; }
+.font-playfair { font-family: 'Playfair Display', Georgia, serif; }
+.font-script { font-family: 'Great Vibes', cursive; }
+.font-inter { font-family: 'Inter', sans-serif; }
+
+/* ================= EFECTOS DE CRISTAL (GLASSMORPHISM) ================= */
+.glass-panel {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html.dark .glass-panel {
+  background: rgba(18, 30, 32, 0.75);
+  border: 1px solid rgba(82, 67, 156, 0.3);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 20px rgba(57, 47, 110, 0.1);
+}
+
+html:not(.dark) .glass-panel {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(27, 45, 47, 0.12);
+  box-shadow: 0 10px 30px -5px rgba(27, 45, 47, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Efectos de Hover con Resplandor */
+.glass-panel-hover:hover {
+  transform: translateY(-2px);
+}
+html.dark .glass-panel-hover:hover {
+  border-color: rgba(223, 177, 46, 0.5);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6), 0 0 25px rgba(223, 177, 46, 0.15);
+}
+html:not(.dark) .glass-panel-hover:hover {
+  border-color: rgba(57, 47, 110, 0.4);
+  box-shadow: 0 15px 35px -5px rgba(27, 45, 47, 0.15);
+}
+
+/* Gradientes Especiales */
+.gradient-brand {
+  background: linear-gradient(135deg, #1b2d2f 0%, #392f6e 100%);
+}
+
+.gradient-brand-light {
+  background: linear-gradient(135deg, #2b474a 0%, #5648a1 100%);
+}
+
+.gradient-gold-btn {
+  background: linear-gradient(135deg, #d97706 0%, #dfb12e 50%, #fef08a 100%);
+  color: #0b1314;
+  font-weight: 800;
+  box-shadow: 0 4px 15px rgba(223, 177, 46, 0.3);
+  transition: all 0.25s ease;
+}
+
+.gradient-gold-btn:hover {
+  background: linear-gradient(135deg, #f59e0b 0%, #fef08a 100%);
+  box-shadow: 0 6px 20px rgba(223, 177, 46, 0.45);
+  transform: translateY(-1.5px);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #fffbeb 0%, #fbbf24 40%, #d97706 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html:not(.dark) .gold-gradient-text {
+  background: linear-gradient(135deg, #78350f 0%, #b45309 50%, #d97706 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ================= ANIMACIONES ================= */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-float {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Shimmer animado para botones principales */
+@keyframes shimmerAnim {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.btn-shimmer {
+  background-size: 200% auto;
+  animation: shimmerAnim 4s linear infinite;
+}
+
+/* Scrollbars estilizadas */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+html.dark ::-webkit-scrollbar-track {
+  background: #0b1314;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #284346;
+  border-radius: 4px;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #dfb12e;
+}
+
+html:not(.dark) ::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+html:not(.dark) ::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 4px;
+}
+html:not(.dark) ::-webkit-scrollbar-thumb:hover {
+  background: #392f6e;
+}
+
+/* ================= GUÍAS DE CORTE ================= */
+.cut-mark-horizontal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px dashed #94a3b8;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.cut-mark-vertical {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  border-left: 1px dashed #94a3b8;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.cut-indicator {
+  position: absolute;
+  font-size: 10px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ================= HOJAS DE IMPRESIÓN ================= */
+.sheet-letter {
+  width: 216mm;
+  min-height: 279mm;
+  max-width: 100%;
+  aspect-ratio: 8.5 / 11;
+  background: white;
+  color: #1e293b;
+  margin: 0 auto;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.sheet-letter-landscape {
+  width: 279.4mm;
+  min-height: 215.9mm;
+  max-width: 100%;
+  aspect-ratio: 11 / 8.5;
+  background: white;
+  color: #1e293b;
+  margin: 0 auto;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Reglas de Impresión */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .sheet-letter, .sheet-letter-landscape {
+    box-shadow: none !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    page-break-after: always;
+  }
+}
