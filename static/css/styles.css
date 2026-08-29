@@ -1,207 +1,129 @@
 /* =========================================================================
-   SISTEMA DE DISEÑO HOMOLOGADO - ESTILO NICEPAGE (BIOGRAFÍA DEL ARTISTA #554831)
-   Tipografía: Playfair Display (Titulares Editoriales) + Open Sans & Plus Jakarta Sans (Cuerpo y UI)
-   Paleta: Blanco Galería, Grafito Obsidiana, Verde Ciprés (#1b2d2f), Morado Bizantino (#392f6e),
-           Acentos en Lavanda (#a18bbf) y Oro Imperial (#dfb12e / #facc15)
+   SISTEMA DE DISEÑO MODERNO Y MINIMALISTA - FUNERARIAS PERPETUO SOCORRO
+   Sin degradados, colores planos, líneas nítidas y alta legibilidad.
+   Paleta: #1b2d2f (Verde Ciprés), #392f6e (Púrpura Bizantino), Neutros Slate y Blanco.
    ========================================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800;900&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Outfit:wght@400;500;600;700;800&family=Cinzel:wght@600;700;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap');
 
 :root {
-  /* Marca Corporativa Principal */
-  --c-green-brand: #1b2d2f;
-  --c-green-dark: #0f1c1d;
-  --c-green-deep: #070e0f;
-  
-  --c-purple-brand: #392f6e;
-  --c-purple-dark: #211a47;
-  --c-purple-lavender: #a18bbf;
-
-  /* Oro y Champán Galería */
-  --c-gold-300: #fef08a;
-  --c-gold-400: #facc15;
-  --c-gold-500: #eab308;
-  --c-gold-600: #ca8a04;
-
-  --ease-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+  --color-green-brand: #1b2d2f;
+  --color-purple-brand: #392f6e;
+  --color-purple-accent: #6366f1;
 }
 
 /* =========================================================================
-   FONDOS MINIMALISTAS Y DE GALERÍA (MODO OSCURO Y MODO CLARO)
+   FONDOS PLANOS Y TIPOGRAFÍA GENERAL
    ========================================================================= */
 html.dark body {
-  background-color: #0b0e12;
-  background-image: 
-    radial-gradient(circle at 15% 15%, rgba(27, 45, 47, 0.45) 0%, transparent 50%),
-    radial-gradient(circle at 85% 10%, rgba(57, 47, 110, 0.4) 0%, transparent 55%),
-    linear-gradient(180deg, #090c10 0%, #10151c 50%, #090c10 100%);
-  background-attachment: fixed;
-  color: #f1f5f9;
-  font-family: 'Open Sans', 'Plus Jakarta Sans', sans-serif;
-  letter-spacing: 0.1px;
+  background-color: #090d14;
+  color: #f8fafc;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 html:not(.dark) body {
   background-color: #f8fafc;
-  background-image: 
-    radial-gradient(circle at 10% 10%, rgba(220, 235, 237, 0.6) 0%, transparent 45%),
-    radial-gradient(circle at 90% 15%, rgba(235, 230, 252, 0.6) 0%, transparent 50%),
-    linear-gradient(180deg, #ffffff 0%, #f4f6f9 50%, #ffffff 100%);
-  background-attachment: fixed;
-  color: #111827;
-  font-family: 'Open Sans', 'Plus Jakarta Sans', sans-serif;
-  letter-spacing: 0.1px;
+  color: #0f172a;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 /* =========================================================================
-   TIPOGRAFÍAS EDITORIALES DE LA PLANTILLA
+   TIPOGRAFÍAS
    ========================================================================= */
-.font-playfair, .font-cinzel, .font-display, .font-serif { 
-  font-family: 'Playfair Display', Georgia, serif; 
+.font-cinzel {
+  font-family: 'Cinzel', serif;
 }
-.font-sans { 
-  font-family: 'Open Sans', 'Plus Jakarta Sans', sans-serif; 
+.font-playfair {
+  font-family: 'Playfair Display', serif;
 }
-.font-outfit { 
-  font-family: 'Outfit', sans-serif; 
+.font-outfit {
+  font-family: 'Outfit', sans-serif;
 }
-.font-script { 
-  font-family: 'Pinyon Script', cursive; 
-}
-
-/* Letras de sección con espaciado amplio estilo galería */
-.tracking-editorial {
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  font-weight: 700;
+.font-jakarta, .font-sans {
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 /* =========================================================================
-   PANELES Y TARJETAS EDITORIALES (ESTILO ART GALLERY)
+   TARJETAS Y CONTENEDORES PLANOS Y MODERNOS
    ========================================================================= */
-.glass-card {
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  transition: all 0.3s var(--ease-smooth);
+.clean-card {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-html.dark .glass-card {
-  background: rgba(16, 22, 28, 0.88);
-  border: 1px solid rgba(161, 139, 191, 0.22);
-  box-shadow: 
-    0 15px 35px -5px rgba(0, 0, 0, 0.7),
-    0 0 0 1px rgba(255, 255, 255, 0.05);
+html.dark .clean-card {
+  background-color: #111726;
+  border: 1px solid #1e293b;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
 }
 
-html:not(.dark) .glass-card {
-  background: #ffffff;
-  border: 1px solid rgba(27, 45, 47, 0.12);
-  box-shadow: 
-    0 15px 35px -5px rgba(0, 0, 0, 0.06),
-    0 2px 10px rgba(0, 0, 0, 0.03);
+html:not(.dark) .clean-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
 }
 
-.gallery-card-hover {
-  transition: transform 0.3s var(--ease-smooth), box-shadow 0.3s var(--ease-smooth), border-color 0.3s;
-}
-
-html.dark .gallery-card-hover:hover {
-  transform: translateY(-4px);
-  border-color: #facc15;
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.85), 0 0 20px rgba(250, 204, 21, 0.15);
-}
-
-html:not(.dark) .gallery-card-hover:hover {
-  transform: translateY(-4px);
-  border-color: #392f6e;
-  box-shadow: 0 20px 40px -10px rgba(27, 45, 47, 0.12);
-}
-
-/* =========================================================================
-   TITULARES Y GRADIENTES DE ORO EDITORIAL
-   ========================================================================= */
-.gold-text-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, #fef08a 25%, #facc15 50%, #eab308 80%, #ca8a04 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-html:not(.dark) .gold-text-gradient {
-  background: linear-gradient(135deg, #1b2d2f 0%, #392f6e 45%, #b45309 85%, #78350f 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* =========================================================================
-   BOTONES ESTILO NICEPAGE ARTIST BIOGRAPHY
-   ========================================================================= */
-.btn-gold-luxury, .gradient-gold-btn {
-  background: linear-gradient(135deg, #fde047 0%, #facc15 35%, #eab308 70%, #ca8a04 100%) !important;
-  color: #030712 !important;
-  font-weight: 800 !important;
-  font-family: 'Open Sans', 'Outfit', sans-serif !important;
-  text-transform: uppercase !important;
-  letter-spacing: 1.5px !important;
-  box-shadow: 
-    0 6px 20px rgba(234, 179, 8, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7),
-    0 0 0 1px rgba(254, 240, 138, 0.6) !important;
-  transition: all 0.25s var(--ease-smooth);
-  position: relative;
-  overflow: hidden;
-  border: none !important;
-}
-
-.btn-gold-luxury::after, .gradient-gold-btn::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -120%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
-  transform: skewX(-25deg);
-  transition: 0.7s ease;
-}
-
-.btn-gold-luxury:hover::after, .gradient-gold-btn:hover::after {
-  left: 160%;
-}
-
-.btn-gold-luxury:hover, .gradient-gold-btn:hover {
-  background: linear-gradient(135deg, #fef08a 0%, #fde047 40%, #eab308 80%, #a16207 100%) !important;
-  box-shadow: 
-    0 10px 25px rgba(234, 179, 8, 0.65),
-    0 0 20px rgba(250, 204, 21, 0.6) !important;
+.clean-card-hover:hover {
   transform: translateY(-2px);
-  color: #000000 !important;
 }
-
-.btn-editorial-outline {
-  border: 1.5px solid rgba(161, 139, 191, 0.4);
-  font-family: 'Open Sans', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-weight: 700;
-  transition: all 0.25s var(--ease-smooth);
+html.dark .clean-card-hover:hover {
+  border-color: #475569;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.7);
 }
-
-html.dark .btn-editorial-outline:hover {
-  background: rgba(250, 204, 21, 0.15);
-  border-color: #facc15;
-  color: #facc15;
-}
-
-html:not(.dark) .btn-editorial-outline:hover {
-  background: rgba(57, 47, 110, 0.08);
-  border-color: #392f6e;
-  color: #392f6e;
+html:not(.dark) .clean-card-hover:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
 }
 
 /* =========================================================================
-   ALTERNADOR DE TEMA (THEME SWITCH PILL)
+   BOTONES SÓLIDOS Y ELEGANTES (SIN DEGRADADOS)
+   ========================================================================= */
+.btn-primary-brand {
+  background-color: #1b2d2f;
+  color: #ffffff;
+  font-weight: 700;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+html.dark .btn-primary-brand {
+  background-color: #392f6e;
+  color: #ffffff;
+  border: 1px solid #4f46e5;
+}
+.btn-primary-brand:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.btn-secondary-brand {
+  background-color: #392f6e;
+  color: #ffffff;
+  font-weight: 700;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  transition: all 0.2s ease;
+}
+.btn-secondary-brand:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.btn-solid-action {
+  background-color: #0f172a;
+  color: #ffffff;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+html.dark .btn-solid-action {
+  background-color: #ffffff;
+  color: #0f172a;
+}
+.btn-solid-action:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* =========================================================================
+   SELECTOR DE TEMA (SEGMENTED SWITCH)
    ========================================================================= */
 .theme-switch-pill {
   display: inline-flex;
@@ -209,81 +131,76 @@ html:not(.dark) .btn-editorial-outline:hover {
   padding: 3px;
   border-radius: 9999px;
   cursor: pointer;
-  transition: all 0.3s var(--ease-smooth);
+  transition: all 0.2s ease;
 }
-
 html.dark .theme-switch-pill {
-  background: #131920;
-  border: 1px solid rgba(250, 204, 21, 0.4);
-  box-shadow: 0 0 12px rgba(250, 204, 21, 0.15);
+  background-color: #1e293b;
+  border: 1px solid #334155;
 }
-
 html:not(.dark) .theme-switch-pill {
-  background: #ffffff;
-  border: 1px solid rgba(57, 47, 110, 0.3);
-  box-shadow: 0 2px 8px rgba(57, 47, 110, 0.1);
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
 }
 
 .theme-switch-option {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   padding: 5px 12px;
   border-radius: 9999px;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.5px;
-  transition: all 0.25s var(--ease-smooth);
+  transition: all 0.2s ease;
 }
 
 html.dark .theme-switch-dark-active {
-  background: linear-gradient(135deg, #1b2d2f, #392f6e);
-  color: #fef08a;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  background-color: #392f6e;
+  color: #ffffff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
 }
-
 html.dark .theme-switch-light-inactive {
   color: #94a3b8;
 }
 
 html:not(.dark) .theme-switch-light-active {
-  background: linear-gradient(135deg, #eab308, #facc15);
-  color: #030712;
-  box-shadow: 0 2px 6px rgba(234, 179, 8, 0.3);
+  background-color: #1b2d2f;
+  color: #ffffff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
 }
-
 html:not(.dark) .theme-switch-dark-inactive {
   color: #64748b;
 }
 
 /* =========================================================================
-   FORMULARIOS E INPUTS MODERNOS
+   FORMULARIOS E INPUTS MODERNOS Y NÍTIDOS
    ========================================================================= */
-.input-luxury {
-  transition: all 0.25s var(--ease-smooth);
-  font-family: 'Open Sans', 'Plus Jakarta Sans', sans-serif;
+.input-clean {
+  transition: all 0.2s ease;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-html.dark .input-luxury {
-  background: #11171e;
-  border: 1px solid rgba(161, 139, 191, 0.35);
-  color: #ffffff;
+html.dark .input-clean {
+  background-color: #0b0f17;
+  border: 1px solid #334155;
+  color: #f8fafc;
 }
-html.dark .input-luxury:focus {
-  background: #151d27;
-  border-color: #facc15;
-  box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.25);
+html.dark .input-clean:focus {
+  background-color: #0f172a;
+  border-color: #6366f1;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
-html:not(.dark) .input-luxury {
-  background: #ffffff;
-  border: 1.5px solid rgba(27, 45, 47, 0.18);
+html:not(.dark) .input-clean {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
   color: #0f172a;
 }
-html:not(.dark) .input-luxury:focus {
-  background: #ffffff;
-  border-color: #392f6e;
-  box-shadow: 0 0 0 3px rgba(57, 47, 110, 0.15);
+html:not(.dark) .input-clean:focus {
+  background-color: #ffffff;
+  border-color: #1b2d2f;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(27, 45, 47, 0.15);
 }
 
 /* =========================================================================
@@ -295,9 +212,9 @@ html:not(.dark) .input-luxury:focus {
   max-width: 100%;
   aspect-ratio: 11 / 8.5;
   background: white;
-  color: #1e293b;
+  color: #0f172a;
   margin: 0 auto;
-  box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
   position: relative;
   box-sizing: border-box;
 }
@@ -320,4 +237,24 @@ html:not(.dark) .input-luxury:focus {
     height: 100% !important;
     page-break-after: always;
   }
+}
+
+/* Scrollbars modernos */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+html.dark ::-webkit-scrollbar-track {
+  background: #090d14;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 9999px;
+}
+html:not(.dark) ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+html:not(.dark) ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
 }

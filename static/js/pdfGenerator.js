@@ -1,8 +1,8 @@
 /**
  * Módulo de Generación y Descarga de PDF con Soporte Horizontal (Landscape) y Dúplex
  * Adaptado para:
- * 1. Librito Díptico (2x2 en Pliego Horizontal) - Imágenes Gigantes del Ancho de la Esquela
- * 2. Separadores de Libro (1x4 en Pliego Horizontal) - Imágenes Gigantes del Ancho de la Esquela
+ * 1. Librito Díptico (2x2 en Pliego Horizontal) - Estilo Solemnidad Clásica Sin Dorados Estridentes
+ * 2. Separadores de Libro (1x4 en Pliego Horizontal) - Estilo Solemnidad Clásica Sin Dorados Estridentes
  */
 const pdfGenerator = {
   imageCache: {},
@@ -82,7 +82,7 @@ const pdfGenerator = {
     const oracionPortada = data.oracion || 'Señor: nosotros a cuyos labios acercaste el amargo cáliz del dolor; bendecimos tu voluntad y te pedimos no separar en el cielo a los que en la tierra formábamos una familia.';
 
     return `
-      <div style="background-color: #ffffff; color: #0f172a; width: 100%; height: 100%; display: flex; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; position: relative; border: 1.5px solid #94a3b8; overflow: hidden;">
+      <div style="background-color: #ffffff; color: #0f172a; width: 100%; height: 100%; display: flex; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; position: relative; border: 1.5px solid #1b2d2f; overflow: hidden;">
         
         <!-- Línea central de doblado (sutil punteada) -->
         <div style="position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; border-left: 1.5px dashed #94a3b8; pointer-events: none;"></div>
@@ -130,7 +130,7 @@ const pdfGenerator = {
           
           <!-- Estampa Gigante del Santo (Casi todo el ancho) -->
           <div style="flex: 1; width: 100%; display: flex; align-items: center; justify-content: center; min-height: 175px;">
-            <img src="${fotoSanto}" alt="Santo" style="max-height: 185px; width: 92%; max-width: 220px; object-fit: contain; filter: drop-shadow(0 3px 8px rgba(0,0,0,0.2));">
+            <img src="${fotoSanto}" alt="Santo" style="max-height: 185px; width: 92%; max-width: 220px; object-fit: contain; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.15));">
           </div>
 
           <!-- Oración de Portada -->
@@ -164,7 +164,7 @@ const pdfGenerator = {
     const parrafos = oracionInt.split('\n\n');
 
     return `
-      <div style="background-color: #ffffff; color: #0f172a; width: 100%; height: 100%; display: flex; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; position: relative; border: 1.5px solid #94a3b8; overflow: hidden;">
+      <div style="background-color: #ffffff; color: #0f172a; width: 100%; height: 100%; display: flex; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; position: relative; border: 1.5px solid #1b2d2f; overflow: hidden;">
         
         <!-- Línea central de doblado (sutil) -->
         <div style="position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; border-left: 1.5px dashed #94a3b8; pointer-events: none;"></div>
@@ -230,7 +230,7 @@ const pdfGenerator = {
 
   /**
    * =========================================================================
-   * 3. FORMATO SEPARADOR DE LIBRO - FRENTE (Imágenes casi del ancho de la esquela)
+   * 3. FORMATO SEPARADOR DE LIBRO - FRENTE (Imágenes casi del ancho de la esquela, sin dorados)
    * =========================================================================
    */
   generateBookmarkFrontHTML(data) {
@@ -241,14 +241,14 @@ const pdfGenerator = {
     const fotoSanto = data.santo_imagen_url || '/static/img/santos/guadalupe.svg';
 
     return `
-      <div style="background-color: #ffffff; color: #0f172a; border: 1.5px solid #b45309; padding: 8px 6px; height: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; justify-content: space-between; position: relative; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; width: 100%; overflow: hidden;">
+      <div style="background-color: #ffffff; color: #0f172a; border: 1.5px solid #1b2d2f; padding: 8px 6px; height: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; justify-content: space-between; position: relative; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; width: 100%; overflow: hidden;">
         
-        <!-- Marco interior dorado -->
-        <div style="position: absolute; top: 2px; left: 2px; right: 2px; bottom: 2px; border: 1px solid #dfb12e; pointer-events: none;"></div>
+        <!-- Marco interior sobrio -->
+        <div style="position: absolute; top: 2px; left: 2px; right: 2px; bottom: 2px; border: 1px solid #392f6e; pointer-events: none;"></div>
         
         <!-- 1. ENCABEZADO: EN MEMORIA DE + NOMBRE + FECHAS -->
         <div style="width: 100%; padding-top: 1px;">
-          <div style="color: #b45309; font-size: 8.5px; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase; margin-bottom: 2px; font-family: 'Outfit', sans-serif;">
+          <div style="color: #1b2d2f; font-size: 8.5px; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase; margin-bottom: 2px; font-family: 'Outfit', sans-serif;">
             † EN MEMORIA DE †
           </div>
           <div style="font-weight: 900; font-size: 13px; text-transform: uppercase; color: #0f172a; line-height: 1.15; padding: 0 4px; font-family: 'Outfit', sans-serif;">
@@ -261,7 +261,7 @@ const pdfGenerator = {
 
         <!-- 2. FOTO DEL FINADO (GIGANTE - CASI TODO EL ANCHO DE LA ESQUELA) -->
         <div style="margin: 4px 0; width: 100%; display: flex; justify-content: center; align-items: center;">
-          <div style="width: 88%; max-width: 155px; height: 110px; background-color: #ffffff; border: 1.5px solid #d97706; padding: 2px; display: flex; align-items: center; justify-content: center; border-radius: 6px; overflow: hidden; box-shadow: 0 3px 6px rgba(0,0,0,0.15);">
+          <div style="width: 88%; max-width: 155px; height: 110px; background-color: #ffffff; border: 1.5px solid #1b2d2f; padding: 2px; display: flex; align-items: center; justify-content: center; border-radius: 4px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.12);">
             <img src="${fotoFinado}" alt="${nombre}" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
         </div>
@@ -276,10 +276,10 @@ const pdfGenerator = {
         <!-- 4. FOTO DEL SANTO AL PIE DE PÁGINA (GIGANTE - CASI TODO EL ANCHO) -->
         <div style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 2px;">
           <div style="height: 105px; width: 88%; max-width: 150px; display: flex; align-items: center; justify-content: center;">
-            <img src="${fotoSanto}" alt="Santo" style="max-height: 105px; max-width: 100%; object-fit: contain; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.2));">
+            <img src="${fotoSanto}" alt="Santo" style="max-height: 105px; max-width: 100%; object-fit: contain; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.15));">
           </div>
           
-          <div style="width: 100%; border-top: 1px solid #fed7aa; padding-top: 2px; font-size: 7px; color: #64748b; margin-top: 2px; font-weight: 600;">
+          <div style="width: 100%; border-top: 1px solid #cbd5e1; padding-top: 2px; font-size: 7px; color: #64748b; margin-top: 2px; font-weight: 600;">
             Recuerdo de sus familiares y novenario
           </div>
         </div>
